@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <!-- <ion-title>List</ion-title> -->
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="body">
+
+      <img alt="logo" src="../assets/imgs/logo2.png" class="logoImage">
+
+  <ion-list>
+
+    <ion-item no-lines class="body">
+      ชื่อผู้ใช้
+    </ion-item>
+    <ion-item>
+      <!-- <ion-input type="text" [(ngModel)]="username"></ion-input> -->
+      <ion-input placeholder="ชื่อผู้ใช้" username></ion-input>
+    </ion-item>
+
+    <ion-item no-lines class="body">
+      รหัสผ่าน
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="รหัสผ่าน" password></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-col col-3 text-center>
+    <div class="center">
+      <button ion-button color="btn" (click)="login()" >เข้าสู่ระบบ</button>
+    </div>
+  </ion-col>
+  <hr>
+  <ion-col col-3 text-center>
+    <div class="center">
+      <a  (click)="register()">สร้างบัญชีผู้ใช้</a>
+    </div>
+  </ion-col>
+  <ion-col col-3 text-center>
+    <div class="center">
+      <a href="#">ลืมรหัสผ่าน</a>
+    </div>
+  </ion-col>
+
+
+</ion-content>
