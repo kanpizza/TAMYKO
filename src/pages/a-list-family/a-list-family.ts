@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ModalController, ViewController } from 'ionic-angular';
 
 /**
  * Generated class for the AListFamilyPage page.
@@ -15,7 +15,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AListFamilyPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public modalCtrl: ModalController) {
+
+  }
+
+  openModal(){
+    const addModal = this.modalCtrl.create('AAddFamilyPage');
+    addModal.present();
   }
 
   ionViewDidLoad() {

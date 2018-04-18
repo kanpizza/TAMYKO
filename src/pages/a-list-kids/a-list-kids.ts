@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,AlertController,ModalController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController,ModalController, ViewController } from 'ionic-angular';
+
 
 /**
  * Generated class for the AListKidsPage page.
@@ -19,7 +20,7 @@ export class AListKidsPage {
   }
 
   openModal(){
-    const confirmModal = this.modalCtrl.create('ConfirmkidPage');
+    const confirmModal = this.modalCtrl.create('AConfirmKidsPage');
     confirmModal.present();
   }
 
