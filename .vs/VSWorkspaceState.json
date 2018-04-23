@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\pages",
+    "\\src\\pages\\a-agent",
+    "\\src\\pages\\a-history-kids",
+    "\\src\\pages\\home",
+    "\\src\\pages\\list"
+  ],
+  "SelectedNode": "\\src\\pages\\a-agent\\a-agent.ts",
+  "PreviewInSolutionExplorer": false
+}

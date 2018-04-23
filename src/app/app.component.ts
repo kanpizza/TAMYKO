@@ -9,6 +9,10 @@ import { AListKidsPage } from '../pages/a-list-kids/a-list-kids';
 import { AListFamilyPage } from '../pages/a-list-family/a-list-family';
 import { AHistoryKidsPage } from '../pages/a-history-kids/a-history-kids';
 import { AAgentPage } from '../pages/a-agent/a-agent';
+import { BHistoryKidsPage } from '../pages/b-history-kids/b-history-kids';
+import { BListRoomsPage } from '../pages/b-list-rooms/b-list-rooms';
+import { BScanAgentPage } from '../pages/b-scan-agent/b-scan-agent';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -28,7 +32,10 @@ export class MyApp {
       { title : 'รายชื่อบุตรหลาน' , component: AListKidsPage },
       { title : 'รายชื่อผู้ปกครอง' , component: AListFamilyPage },
       { title : 'ประวัติการรับบุตรหลาน' , component: AHistoryKidsPage },
-      { title : 'ตัวแทนผู้ปกครอง' , component: AAgentPage }
+      { title : 'ตัวแทนผู้ปกครอง' , component: AAgentPage },
+      { title : 'รายชื่อห้องเรียน' , component: BHistoryKidsPage },
+      { title : 'ประวัติการรับนักเรียน' , component: BListRoomsPage },
+      { title : 'สแกนตัวแทนผู้ปกครอง' , component: BScanAgentPage },
     ];
 
   }
