@@ -9,12 +9,12 @@ import { HttpClient } from '@angular/common/http';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 
 export interface Config {
   detailRoom: string;
 }
-
+@IonicPage()
 @Component({
   selector: 'page-b-detail-rooms',
   templateUrl: 'b-detail-rooms.html',
