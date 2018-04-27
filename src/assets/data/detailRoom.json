@@ -1,0 +1,18 @@
+{
+   "detailRoom" : [
+      {
+         "เวลา" : "Ionic Framework",
+         "ชื่อนักเรียน" : "Hybrid application development framework",
+         "ชื่อผู้ปกครอง" : "Drifty",
+         "อนุญาต" : "Y",
+         "ไม่อนุญาต" : "N"
+      },
+      {
+         "เวลา" : "Ionic Framework",
+         "ชื่อนักเรียน" : "Hybrid application development framework",
+         "ชื่อผู้ปกครอง" : "Drifty",
+         "อนุญาต" : "Y",
+         "ไม่อนุญาต" : "N"
+      }
+   ]
+}

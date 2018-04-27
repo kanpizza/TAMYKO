@@ -13,12 +13,18 @@ import { AAgentPage } from '../pages/a-agent/a-agent';
 import { BHistoryKidsPage } from '../pages/b-history-kids/b-history-kids';
 import { BListRoomsPage } from '../pages/b-list-rooms/b-list-rooms';
 import { BScanAgentPage } from '../pages/b-scan-agent/b-scan-agent';
+import { BDetailRoomsPage } from '../pages/b-detail-rooms/b-detail-rooms';
+import { BDetailPickKidsPage } from '../pages/b-detail-pick-kids/b-detail-pick-kids';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Camera } from '@ionic-native/camera';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -32,12 +38,16 @@ import { Camera } from '@ionic-native/camera';
     AAgentPage,
     BHistoryKidsPage,
     BListRoomsPage,
-    BScanAgentPage
+    BScanAgentPage,
+    BDetailRoomsPage,
+    BDetailPickKidsPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    NgxQRCodeModule
+    NgxQRCodeModule,
+    HttpClientModule,
+    NgxDatatableModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -51,7 +61,9 @@ import { Camera } from '@ionic-native/camera';
     AAgentPage,
     BHistoryKidsPage,
     BListRoomsPage,
-    BScanAgentPage
+    BScanAgentPage,
+    BDetailRoomsPage,
+    BDetailPickKidsPage
 
   ],
   providers: [

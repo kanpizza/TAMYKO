@@ -12,6 +12,8 @@ import { AAgentPage } from '../pages/a-agent/a-agent';
 import { BHistoryKidsPage } from '../pages/b-history-kids/b-history-kids';
 import { BListRoomsPage } from '../pages/b-list-rooms/b-list-rooms';
 import { BScanAgentPage } from '../pages/b-scan-agent/b-scan-agent';
+import { BDetailRoomsPage } from '../pages/b-detail-rooms/b-detail-rooms';
+import { BDetailPickKidsPage } from '../pages/b-detail-pick-kids/b-detail-pick-kids';
 
 @Component({
   templateUrl: 'app.html'

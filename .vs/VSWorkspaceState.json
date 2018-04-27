@@ -3,12 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\assets",
+    "\\src\\assets\\data",
+    "\\src\\assets\\fonts",
     "\\src\\pages",
     "\\src\\pages\\a-agent",
-    "\\src\\pages\\a-history-kids",
-    "\\src\\pages\\home",
-    "\\src\\pages\\list"
+    "\\src\\pages\\b-detail-pick-kids",
+    "\\src\\pages\\b-list-rooms"
   ],
-  "SelectedNode": "\\src\\pages\\a-agent\\a-agent.ts",
+  "SelectedNode": "\\src\\pages\\b-list-rooms\\b-list-rooms.ts",
   "PreviewInSolutionExplorer": false
 }
