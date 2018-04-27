@@ -71,21 +71,21 @@
       ชื่อผู้ใช้
     </ion-item>
     <ion-item>
-      <ion-input name></ion-input>
+      <ion-input name [(ngModel)]="username_field"></ion-input>
     </ion-item>
 
     <ion-item no-lines class="body">
       รหัสผ่าน
     </ion-item>
     <ion-item>
-      <ion-input pass type="password"></ion-input>
+      <ion-input pass type="password" [(ngModel)]="password_field"></ion-input>
     </ion-item>
 
     <ion-item no-lines class="body">
       ยืนยันรหัสผ่าน
     </ion-item>
     <ion-item>
-      <ion-input confirmPass type="password"></ion-input>
+      <ion-input confirmPass type="password" [(ngModel)]="confirm_password_filed"></ion-input>
     </ion-item>
     <ion-col col-3 text-center>
       <div class="center">
