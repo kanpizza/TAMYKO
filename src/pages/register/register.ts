@@ -9,6 +9,7 @@ import * as AWS from 'aws-sdk';
 })
 export class RegisterPage {
   name_field = "";
+  lastname_field = "";
   tel_field = "";
   id_field = "";
   email_field = "";
@@ -26,6 +27,7 @@ export class RegisterPage {
   }
   register(){
     console.log(this.name_field);
+    console.log(this.lastname_field);
     console.log(this.tel_field);
     console.log(this.id_field);
     console.log(this.email_field);
@@ -34,7 +36,9 @@ export class RegisterPage {
     console.log(this.username_field);
     console.log(this.password_field);
     console.log(this.confirm_password_filed);
+    this.createUser();
     this.name_field = "";
+    this.lastname_field = "";
     this.tel_field = "";
     this.id_field = "";
     this.email_field = "";
@@ -43,11 +47,34 @@ export class RegisterPage {
     this.username_field = "";
     this.password_field = "";
     this.confirm_password_filed = "";
+    //check pass and conf pass same
 
   }
-  public static createUser(){
+  createUser(){
+    var count = 1000000000;
     let dynamoDb = new AWS.DynamoDB();
     let docClient = new AWS.DynamoDB.DocumentClient();
+    var params = {
+      TableName: "Users",
+      Item: {
+        "ID" : count+1,
+        "citizen_ID" : this.id_field,
+        "role" : "1",
+        "firstname" : this.name_field,
+        "lastname" : this.lastname_field,
+        "email" : this.email_field,
+        "gender" : this.gender,
+        "birthdate" : this.myDate,
+        "username" : this.username_field,
+        "password" : this.password_field
+      }
+    }
+    docClient.put(params,function(err,data){
+      if(err)
+        console.log(JSON.stringify(err,null,2));
+      else
+        console.log(JSON.stringify(data,null,2));
+    });
   }
 
 }
