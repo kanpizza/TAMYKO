@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as AWS from 'aws-sdk';
-
+import { DynamoDBService } from '../../core/dynamodb.service';
 @IonicPage()
 @Component({
   selector: 'page-register',
@@ -18,6 +18,10 @@ export class RegisterPage {
   username_field = "";
   password_field = "";
   confirm_password_filed = "";
+  private static config = {
+    region: 'us-west-2', 
+  };
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -57,24 +61,19 @@ export class RegisterPage {
     var params = {
       TableName: "Users",
       Item: {
-        "ID" : count+1,
-        "citizen_ID" : this.id_field,
+        "id" : "2423423423",
+        "citizen_id" : this.id_field,
         "role" : "1",
         "firstname" : this.name_field,
         "lastname" : this.lastname_field,
         "email" : this.email_field,
         "gender" : this.gender,
-        "birthdate" : this.myDate,
+        "birth_date" : this.myDate,
         "username" : this.username_field,
         "password" : this.password_field
       }
     }
-    docClient.put(params,function(err,data){
-      if(err)
-        console.log(JSON.stringify(err,null,2));
-      else
-        console.log(JSON.stringify(data,null,2));
-    });
+   DynamoDBService.put(params);
   }
 
 }

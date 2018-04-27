@@ -25,6 +25,7 @@ import { Camera } from '@ionic-native/camera';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { HttpClientModule } from '@angular/common/http';
 
+import { DynamoDBService } from '../core/dynamodb.service';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     StatusBar,
     SplashScreen,
+    DynamoDBService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BarcodeScanner,
     Camera
