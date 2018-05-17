@@ -17,6 +17,8 @@ export class HomePage {
     this.navCtrl.push(RegisterPage);
   }
   login(){
-    this.navCtrl.push(AListKidsPage);
+    //this.navCtrl.push(AListKidsPage);
+    //this.navCtrl.setRoot(AListKidsPage);
+    this.navCtrl.setRoot(AListKidsPage);
   }
 }

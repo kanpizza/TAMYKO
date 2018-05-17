@@ -11,9 +11,9 @@ import { HttpClient } from '@angular/common/http';
 
 @IonicPage()
 
-export interface Config {
-  detailRoom: string;
-}
+//export interface Config {
+  //detailRoom: string;
+//}
 
 @Component({
   selector: 'page-b-detail-pick-kids',
@@ -21,7 +21,7 @@ export interface Config {
 })
 export class BDetailPickKidsPage {
 
-   public config : Config;
+   //public config : Config;
    public columns : any;
    public rows : any;
 
@@ -39,15 +39,15 @@ export class BDetailPickKidsPage {
 
 
 
-   ionViewDidLoad() : void {
-      this._HTTP
-      .get<Config>('../../assets/data/DetailRoom.json')
-      .subscribe((data) =>
-      {
-         this.rows = data.detailRoom;
-      });
-    console.log('ionViewDidLoad BDetailPickKidsPage');
-   }
+   //ionViewDidLoad() : void {
+   //   this._HTTP
+   //   .get<Config>('../../assets/data/DetailRoom.json')
+   //   .subscribe((data) =>
+   //   {
+   //      this.rows = data.detailRoom;
+   //   });
+   // console.log('ionViewDidLoad BDetailPickKidsPage');
+   //}
 
 
 

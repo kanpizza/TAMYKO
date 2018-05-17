@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\app",
-    "\\src\\assets",
     "\\src\\assets\\data",
     "\\src\\assets\\fonts",
     "\\src\\pages",
-    "\\src\\pages\\a-agent",
+    "\\src\\pages\\a-add-family",
+    "\\src\\pages\\a-list-kids",
     "\\src\\pages\\b-detail-pick-kids",
-    "\\src\\pages\\b-list-rooms"
+    "\\src\\pages\\home",
+    "\\src\\pages\\register"
   ],
-  "SelectedNode": "\\src\\pages\\b-list-rooms\\b-list-rooms.ts",
+  "SelectedNode": "\\src\\pages\\register\\register.ts",
   "PreviewInSolutionExplorer": false
 }
