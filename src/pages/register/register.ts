@@ -34,10 +34,8 @@ export class RegisterPage {
     console.log(this.username_field);
     console.log(this.password_field);
     console.log(this.confirm_password_filed);
-<<<<<<< HEAD
-=======
     // this.createUser();
->>>>>>> 62c8274e8af468df21028380a51eeb57e0e118c0
+
     this.name_field = "";
     this.tel_field = "";
     this.id_field = "";
@@ -49,12 +47,12 @@ export class RegisterPage {
     this.confirm_password_filed = "";
 
   }
-<<<<<<< HEAD
+
 //  public static createUser(){
 //    let dynamoDb = new AWS.DynamoDB();
 //    let docClient = new AWS.DynamoDB.DocumentClient();
 //  }
-=======
+
   // createUser(){
   //   var count = 1000000000;
   //   let dynamoDb = new AWS.DynamoDB();
@@ -76,6 +74,5 @@ export class RegisterPage {
   //   }
   //  DynamoDBService.put(params);
   // }
->>>>>>> 62c8274e8af468df21028380a51eeb57e0e118c0
 
 }

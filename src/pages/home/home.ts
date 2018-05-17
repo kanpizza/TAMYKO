@@ -19,15 +19,13 @@ export class HomePage {
     this.navCtrl.push(RegisterPage);
   }
   login(){
-<<<<<<< HEAD
     //this.navCtrl.push(AListKidsPage);
     //this.navCtrl.setRoot(AListKidsPage);
     this.navCtrl.setRoot(AListKidsPage);
-=======
+
 
     this.navCtrl.push(AListKidsPage);
     
->>>>>>> 62c8274e8af468df21028380a51eeb57e0e118c0
   }
 //   async getItems(){
 //     var params = {
