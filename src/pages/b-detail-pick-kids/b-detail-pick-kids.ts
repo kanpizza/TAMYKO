@@ -9,7 +9,6 @@ import { HttpClient } from '@angular/common/http';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 
 export interface Config {
   detailRoom: string;

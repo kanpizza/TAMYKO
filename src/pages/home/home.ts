@@ -4,12 +4,14 @@ import { NavController } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { AListKidsPage } from '../a-list-kids/a-list-kids';
 
+import { DynamoDBService } from '../../core/dynamodb.service';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+  username_field="";
+  password_field="";
   constructor(public navCtrl: NavController) {
 
   }
@@ -17,6 +19,15 @@ export class HomePage {
     this.navCtrl.push(RegisterPage);
   }
   login(){
+
     this.navCtrl.push(AListKidsPage);
+    
   }
+//   async getItems(){
+//     var params = {
+//       TableName: "EmployeesCognito",
+//       ProjectionExpression: "id,empId,surnameTh,nameTh,s3,nameEn,surnameEn"
+//     };
+//     await DynamoDBService.scan(params).then((data => this.employees = data));
+// }
 }

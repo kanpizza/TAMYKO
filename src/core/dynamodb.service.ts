@@ -6,8 +6,8 @@ export class DynamoDBService {
   
   private static config = {
     region: 'us-west-2', 
-    accessKeyId: 'key eiei', 
-    secretAccessKey: 'key eiei'
+    accessKeyId: 'AKIAJ37ROVQJQIMDIDEA', 
+    secretAccessKey: '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'
   };
   
   public static scan(params){
@@ -17,7 +17,7 @@ export class DynamoDBService {
     
     docClient.scan(params, function(err, data) {
       if (err) {
-        console.log("Error", err);
+        console.log('err', err);
       } else {
         console.log(data.Items);
       }
@@ -30,9 +30,9 @@ export class DynamoDBService {
 
     docClient.put(params, function(err, data) {
       if (err) {
-        console.log("Error", err);
+        console.log('error', err);
       } else {
-        console.log("Success", data);
+        console.log("ok", data);
       }
     });
   }
@@ -43,9 +43,9 @@ export class DynamoDBService {
 
     docClient.get(params, function(err, data) {
       if (err) {
-        console.log("Error", err);
+        console.log("err", err);
       } else {
-        console.log("Success", data);
+        console.log("ok", data);
       }
     });
   }
