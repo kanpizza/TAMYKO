@@ -21,11 +21,9 @@ export class HomePage {
   login(){
     //this.navCtrl.push(AListKidsPage);
     //this.navCtrl.setRoot(AListKidsPage);
+    DynamoDBService.setusername(this.username_field,this.password_field);
     this.navCtrl.setRoot(AListKidsPage);
-
-
     this.navCtrl.push(AListKidsPage);
-    
   }
 //   async getItems(){
 //     var params = {

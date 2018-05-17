@@ -26,13 +26,13 @@ export class BDetailPickKidsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams ,private _HTTP: HttpClient) {
 
-         this.columns = [
-        { prop: 'เวลา' },
-        { prop: 'ชื่อนักเรียน' },
-        { prop: 'ชื่อผู้ปกครอง' },
-        { prop: 'อนุญาต' },
-        { prop: 'ไม่อนุญาต' },
-      ];
+      //    this.columns = [
+      //   { prop: 'เวลา' },
+      //   { prop: 'ชื่อนักเรียน' },
+      //   { prop: 'ชื่อผู้ปกครอง' },
+      //   { prop: 'อนุญาต' },
+      //   { prop: 'ไม่อนุญาต' },
+      // ];
   }
 
 
