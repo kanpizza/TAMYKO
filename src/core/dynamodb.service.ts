@@ -7,8 +7,8 @@ export class DynamoDBService {
   static password="";
   private static config = {
     region: 'us-west-2', 
-    accessKeyId: 'AKIAJ37ROVQJQIMDIDEA', 
-    secretAccessKey: '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'
+    accessKeyId: '', 
+    secretAccessKey: ''
   };
 
   public static setusername(username,password){
@@ -16,34 +16,32 @@ export class DynamoDBService {
     this.password = password ;
     console.log(this.username);
     console.log(this.password);
-    // DynamoDBService.checkUsername(this.username);
+    DynamoDBService.checkUsername(this.username,this.password);
   }
-  public static checkUsername(username){
-    AWS.config.update(this.config);
-    let dynamodb = new AWS.DynamoDB({ region: 'us-west-2' });
-    let docClient = new AWS.DynamoDB.DocumentClient();
-    var params = {
-      ExpressionAttributeNames: {
-       "#AT": "username", 
-      }, 
-      ExpressionAttributeValues: {
-       ":a": {
-         S: "username"
-        }
-      }, 
-      FilterExpression: "#AT = :a", 
-      ProjectionExpression: "#AT", 
-      TableName: "Users"
-     };
-    //  dynamodb.query(params, function(err, data) {
-    //   if (err) console.log(err, err.stack); // an error occurred
-    //   else     console.log('username: '+username);           // successful response
-    
-    // });
-     dynamodb.scan(params, function(err, data) {
-       if (err) console.log('err',err.stack); // an error occurred
-       else     console.log("pass : "+data.Items.values);           // successful response
-     });
+  public static checkUsername(username,password){
+    // AWS.config.update(this.config);
+    // let dynamodb = new AWS.DynamoDB({ region: 'us-west-2' });
+    // let docClient = new AWS.DynamoDB.DocumentClient();
+    // var params = {
+    //   ExpressionAttributeNames: {
+    //    "#AT": "username", 
+    //   }, 
+    //   ExpressionAttributeValues: {
+    //    ":a": {
+    //      S: "username"
+    //     }
+    //   }, 
+    //   FilterExpression: "#AT = :a", 
+    //   ProjectionExpression: "#AT", 
+    //   TableName: "Users"
+    //  };
+    //  dynamodb.scan(params, function(err, data) {
+    //    if (err) console.log('err',err.stack); // an error occurred
+    //    else     console.log("pass : "+data.Items.values);           // successful response
+    //  });
+    if (this.username == "cch001" && this.password=="cch001678"){
+
+    }
   }
   
   public static scan(params){
