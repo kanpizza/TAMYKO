@@ -3,6 +3,8 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { DynamoDBService} from '../core/dynamodb.service';
+
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { AListKidsPage } from '../pages/a-list-kids/a-list-kids';
@@ -16,12 +18,15 @@ import { BDetailRoomsPage } from '../pages/b-detail-rooms/b-detail-rooms';
 import { BDetailPickKidsPage } from '../pages/b-detail-pick-kids/b-detail-pick-kids';
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  template: `<ion-nav [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  // rootPage: any = HomePage;
+  public rootPage: any = HomePage;
+
 
   pages: Array<{title: string, component: any}>;
 
