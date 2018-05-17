@@ -6,7 +6,7 @@ export class DynamoDBService {
   
   private static config = {
     region: 'us-west-2', 
-    accessKeyId: '', 
+    accessKeyId: 'new  newww ', 
     secretAccessKey: ''
   };
   
