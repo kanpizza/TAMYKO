@@ -16,14 +16,14 @@
     </ion-item>
     <ion-item>
       <!-- <ion-input type="text" [(ngModel)]="username"></ion-input> -->
-      <ion-input placeholder="ชื่อผู้ใช้" username></ion-input>
+      <ion-input placeholder="ชื่อผู้ใช้" username [(ngModel)]="username_field"></ion-input>
     </ion-item>
 
     <ion-item no-lines class="body">
       รหัสผ่าน
     </ion-item>
     <ion-item>
-      <ion-input placeholder="รหัสผ่าน" password></ion-input>
+      <ion-input placeholder="รหัสผ่าน" password  type="password" [(ngModel)]="password_field"></ion-input>
     </ion-item>
 
   </ion-list>
