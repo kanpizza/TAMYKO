@@ -26,23 +26,24 @@ export class RegisterPage {
      this.todo = this.formBuilder.group({
       name_field: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       lastname_field: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-      tel_field: ['', Validators.required],
-      id_field: ['', Validators.required],
-      email_field: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+      tel_field: ['',Validators.compose([Validators.maxLength(10), Validators.minLength(10), Validators.required])],
+      id_field: ['',Validators.compose([Validators.maxLength(13), Validators.minLength(13), Validators.required])],
+      email_field: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})'), Validators.required])],
       gender: ['', Validators.required],
       myDate: ['', Validators.required],
-      username_field: ['', Validators.required],
-      password_field: ['', Validators.required],
+      username_field: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[0-9a-zA-Z]*'), Validators.required])],
+      //UpperCase/Number
+      password_field: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(12), Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,12}$')])],
       confirm_password_filed: ['', Validators.required],
-    });
+    }, {validator: this.matchingPasswords('password_field', 'confirm_password_filed')}); 
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
-  onSubmit(){
-    this.myControl = new FormControl('value', Validators.required);
+  regisForm(){
+    //click submit on RegisterPage
   }
   register(){
     console.log(this.name_field);
@@ -95,5 +96,19 @@ export class RegisterPage {
   //   }
   //  DynamoDBService.put(params);
   // }
+
+  matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
+    // TODO maybe use this https://github.com/yuyang041060120/ng2-validation#notequalto-1
+    return (group: FormGroup): {[key: string]: any} => {
+      let password = group.controls[passwordKey];
+      let confirmPassword = group.controls[confirmPasswordKey];
+
+      if (password.value !== confirmPassword.value) {
+        return {
+          mismatchedPasswords: true
+        };
+      }
+    }
+  }
 
 }

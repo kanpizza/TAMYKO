@@ -11,7 +11,7 @@
 
 
 
-   <form [formGroup]="todo" (ngSubmit)="logForm()">
+   <form [formGroup]="todo" (ngSubmit)="regisForm()">
       <ion-item no-lines class="body">
         ชื่อ
       </ion-item>
@@ -74,7 +74,7 @@
       <ion-label>MM/DD/YYYY</ion-label>
       <ion-datetime displayFormat="MM/DD/YYYY" formControlName="myDate"[(ngModel)]="myDate"></ion-datetime>
     </ion-item>
-    <p ion-text *ngIf="!todo.controls.myDate.valid  && (todo.controls.myDate.dirty )" color="danger" >*กรุณากรอกวันเกิดให้ถูกต้อง</p>
+    <p ion-text *ngIf="!todo.controls.myDate.valid  && (todo.controls.myDate.dirty )" color="danger" >*ไม่สามารถใส่ตัวอักษรพิเศษได้</p>
     <ion-item no-lines class="body">
       ชื่อผู้ใช้
     </ion-item>
@@ -95,7 +95,8 @@
     <ion-item>
       <ion-input confirmPass type="password" formControlName="confirm_password_filed" [(ngModel)]="confirm_password_filed"></ion-input>
     </ion-item>
-    <p ion-text *ngIf="!todo.controls.confirm_password_filed.valid  && (todo.controls.confirm_password_filed.dirty )" color="danger" >*กรุณากรอกรหัสผ่านให้ถูกต้อง</p>
+    <p ion-text *ngIf="todo.controls.confirm_password_filed.touched && todo.hasError('mismatchedPasswords') && todo.controls.password_field.valid" color="danger" >*กรุณากรอกรหัสผ่านให้ตรงกัน</p>
+
 
       
       
