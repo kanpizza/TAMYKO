@@ -26,6 +26,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { HttpClientModule } from '@angular/common/http';
 
 import { DynamoDBService } from '../core/dynamodb.service';
+import { RecaptchaModule } from 'ng-recaptcha';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { DynamoDBService } from '../core/dynamodb.service';
   ],
   imports: [
     BrowserModule,
+    RecaptchaModule.forRoot(),
     IonicModule.forRoot(MyApp),
     NgxQRCodeModule,
     HttpClientModule,

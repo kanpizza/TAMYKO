@@ -100,11 +100,13 @@
 
       
       
-          <ion-col col-3 text-center>
+      <ion-col col-3 text-center>
       <div class="center">
-
+        <re-captcha (resolved)="captchaResolved($event)" siteKey="6Lf3-lkUAAAAANnjgC7_RAwKZ2pA7LplldSJ-bme"></re-captcha>
+        <br>
         <button ion-button color="danger">ยกเลิก</button>
-        <button ion-button color="secondary" type="submit" [disabled]="!todo.valid">ยืนยัน</button>
+        <button ion-button color="secondary" type="submit" [disabled]="!todo.valid || !captchaPassed">ยืนยัน</button>
+        
       </div>
     </ion-col>
    

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as AWS from 'aws-sdk';
-import { FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, Validators, FormControl,FormGroup} from '@angular/forms';
+import { Component, NgZone } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 
 @IonicPage()
@@ -20,8 +22,12 @@ export class RegisterPage {
   password_field = "";
   confirm_password_filed = "";
 
+  //captcha Data
+  private captchaPassed: boolean = false;
+  private captchaResponse: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder ) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder,private http: HttpClient, private zone: NgZone ) {
 
      this.todo = this.formBuilder.group({
       name_field: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
@@ -110,5 +116,14 @@ export class RegisterPage {
       }
     }
   }
+    captchaResolved(response: string): void {
+ 
+        this.zone.run(() => {
+            this.captchaPassed = true;
+            this.captchaResponse = response;
+        });
+ 
+    }
+ 
 
 }
