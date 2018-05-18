@@ -21,7 +21,18 @@ export class HomePage {
   login(){
     //this.navCtrl.push(AListKidsPage);
     //this.navCtrl.setRoot(AListKidsPage);
-    DynamoDBService.setusername(this.username_field,this.password_field);
+    // DynamoDBService.setUsername(this.username_field,this.password_field);
+    console.log('rrr = '+this.username_field);
+    console.log('rrr = '+this.password_field);
+    var params = {
+      TableName : "Users",
+      FilterExpression : "username = :username AND password = :password",
+      ExpressionAttributeValues : {':username': this.username_field,':password': this.password_field}
+  };
+  DynamoDBService.scan(params);
+  this.checkUser();
+  }
+  checkUser(){
     this.navCtrl.setRoot(AListKidsPage);
     this.navCtrl.push(AListKidsPage);
   }
