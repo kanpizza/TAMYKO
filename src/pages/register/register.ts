@@ -4,7 +4,6 @@ import * as AWS from 'aws-sdk';
 import { FormBuilder, Validators, FormControl,FormGroup} from '@angular/forms';
 import { Component, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { HomePage } from '../home/home';
 
 
 @IonicPage()
@@ -13,7 +12,6 @@ import { HomePage } from '../home/home';
   templateUrl: 'register.html',
 })
 export class RegisterPage {
-
   name_field = "";
   tel_field = "";
   id_field = "";
@@ -36,7 +34,7 @@ export class RegisterPage {
       lastname_field: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       tel_field: ['',Validators.compose([Validators.maxLength(10), Validators.minLength(10), Validators.required])],
       id_field: ['',Validators.compose([Validators.maxLength(13), Validators.minLength(13), Validators.required])],
-      email_field: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{2,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})'), Validators.required])],
+      email_field: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})'), Validators.required])],
       gender: ['', Validators.required],
       myDate: ['', Validators.required],
       username_field: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[0-9a-zA-Z]*'), Validators.required])],
@@ -126,8 +124,6 @@ export class RegisterPage {
         });
  
     }
-
-
  
 
 }
