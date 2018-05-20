@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController,ModalController, ViewController } from 'ionic-angular';
-
+import * as AWS from 'aws-sdk';
+import { DynamoDBService } from '../../core/dynamodb.service';
 
 /**
  * Generated class for the AListKidsPage page.
@@ -15,6 +16,8 @@ import { IonicPage, NavController, NavParams, AlertController,ModalController, V
   templateUrl: 'a-list-kids.html',
 })
 export class AListKidsPage {
+  keyID = "";
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public modalCtrl: ModalController) {
   }
@@ -33,7 +36,7 @@ export class AListKidsPage {
      message: "Key ID",
       inputs: [
         {
-          name: 'Key ID',
+          name: 'KeyIDinput',
           placeholder: 'Key ID'
         }
   
@@ -48,7 +51,8 @@ export class AListKidsPage {
         {
           text: 'ยืนยัน',
           handler: data => {
-            console.log('Saved clicked');
+            this.createKeyID(data.KeyIDinput);
+            console.log("Dataaaaa: "+data.KeyIDinput);
           }
         }
       ]
@@ -58,6 +62,21 @@ export class AListKidsPage {
   
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChildPage');
+  }
+
+
+  createKeyID(data){
+    let dynamoDb = new AWS.DynamoDB();
+    let docClient = new AWS.DynamoDB.DocumentClient();
+    console.log("KeyIDDDDDD");
+    var params = {
+      TableName: "Kids",
+      Item: {
+        "ID_Kid" : "2000000005",
+        "keyID" : data
+      }
+    }
+   DynamoDBService.put(params);
   }
 
 
