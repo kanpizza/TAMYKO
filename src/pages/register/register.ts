@@ -1,4 +1,3 @@
-import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as AWS from 'aws-sdk';
 import { FormBuilder, Validators, FormControl,FormGroup} from '@angular/forms';
