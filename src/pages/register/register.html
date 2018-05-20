@@ -1,16 +1,12 @@
 <ion-header>
-  <!-- <ion-navbar color="purple">
-    <ion-title>Home</ion-title>
-  </ion-navbar> -->
+  <ion-navbar color="purple">
+    <ion-title>Register</ion-title>
+  </ion-navbar>
 </ion-header>
 
 <ion-content padding class="body">
   <img alt="logo" src="../assets/imgs/logo2.png" class="logoImage">
   
-
-
-
-
    <form [formGroup]="todo" (ngSubmit)="regisForm()">
       <ion-item no-lines class="body">
         ชื่อ
@@ -96,23 +92,17 @@
       <ion-input confirmPass type="password" formControlName="confirm_password_filed" [(ngModel)]="confirm_password_filed"></ion-input>
     </ion-item>
     <p ion-text *ngIf="todo.controls.confirm_password_filed.touched && todo.hasError('mismatchedPasswords') && todo.controls.password_field.valid" color="danger" >*กรุณากรอกรหัสผ่านให้ตรงกัน</p>
-
-
-      
-      
       <ion-col col-3 text-center>
       <div class="center">
         <re-captcha (resolved)="captchaResolved($event)" siteKey="6Lf3-lkUAAAAANnjgC7_RAwKZ2pA7LplldSJ-bme"></re-captcha>
         <br>
-        <button ion-button color="danger">ยกเลิก</button>
-        <button ion-button color="secondary" type="submit" [disabled]="!todo.valid && !captchaPassed">ยืนยัน</button>
+        <button ion-button color="danger" (click)="changePage('HomePage')">ยกเลิก</button>
+        <button ion-button color="secondary" type="submit" [disabled]="!todo.valid || !captchaPassed">ยืนยัน</button>
         
       </div>
     </ion-col>
    
     </form>
-
-
 
 </ion-content>
 

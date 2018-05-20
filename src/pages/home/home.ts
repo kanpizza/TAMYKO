@@ -33,8 +33,8 @@ export class HomePage {
   this.checkUser();
   }
   checkUser(){
+    //this.navCtrl.push(AListKidsPage);
     this.navCtrl.setRoot(AListKidsPage);
-    this.navCtrl.push(AListKidsPage);
   }
 //   async getItems(){
 //     var params = {

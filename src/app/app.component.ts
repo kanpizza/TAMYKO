@@ -19,7 +19,7 @@ import { BDetailPickKidsPage } from '../pages/b-detail-pick-kids/b-detail-pick-k
 
 @Component({
   templateUrl: 'app.html',
-  template: `<ion-nav [root]="rootPage"></ion-nav>`
+  
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
