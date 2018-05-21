@@ -59,6 +59,9 @@ export class AListKidsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChildPage');
   }
+  getKidList(){
+  
+  }
 
 
 }

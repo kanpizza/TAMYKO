@@ -1,10 +1,12 @@
 <ion-header>
+    
       <ion-navbar>
          <button ion-button menuToggle>
           <ion-icon name="menu"></ion-icon>
         </button>
         <ion-title>parentAgent</ion-title>
       </ion-navbar>
+    
     </ion-header>
     
     
@@ -12,18 +14,43 @@
     <ion-content padding>
       <ion-grid>
           <ion-row>
-            <ion-label fixed>ชื่อ - นามสกุล</ion-label>
+            <ion-label fixed>Name</ion-label>
           </ion-row>
           <ion-row padding-left>
              <ion-input type="text" value="" [(ngModel)]="input_name" ></ion-input>
           </ion-row>
           <ion-row>
-            <ion-label fixed>เบอร์โทรศัพท์</ion-label>
+            <ion-label fixed>Phone Number</ion-label>
           </ion-row>
           <ion-row padding-left>
              <ion-input type="text" value="" [(ngModel)]="input_phone"></ion-input>
           </ion-row>
         </ion-grid>
+
+        <ion-row>
+            <ion-label fixed>Your National ID</ion-label>
+        </ion-row>
+  
+        <ion-item>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+
+          
+        <ion-row>
+            <ion-label fixed>choose Students</ion-label>
+        </ion-row>
+
+        <ion-item>
+            <ion-label>Students</ion-label>
+            <ion-select [(ngModel)]="Students">
+              <ion-option value="a">AAA</ion-option>
+              <ion-option value="b">BBBB</ion-option>
+            </ion-select>
+          </ion-item>
+
+       
+
+
         <ion-item padding text-center>
             <button default ion-button text-center color="light" (click)="createCode()">รับ QR CODE</button>
         </ion-item>
@@ -36,6 +63,8 @@
           </div>
         </ion-card-content>
       </ion-card>
+
+      
     
     </ion-content>
     
