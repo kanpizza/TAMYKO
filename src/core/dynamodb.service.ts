@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
 import * as AWS from 'aws-sdk';
+import { ListAccountsRequest } from 'aws-sdk/clients/organizations';
+import { List } from 'ionic-angular';
 
 @Injectable()
 export class DynamoDBService {
   static username="";
   static password="";
+  static firstname="";
+  static lastname = "";
+  static username_db = "";
   private static config = {
     region: 'us-west-2', 
-    accessKeyId: '', 
-    secretAccessKey: ''
+    accessKeyId: 'AKIAJ37ROVQJQIMDIDEA', 
+    secretAccessKey: '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'
   };
 
   public static setUsername(username,password){
@@ -23,20 +28,32 @@ export class DynamoDBService {
   public static getPassword(){
     return this.password;
   }
+  public static setParent(data){
+    this.firstname = data.firstname ;
+    this.lastname = data.lastname ;
+    this.username_db = data.username ;
+    // console.log("test "+this.firstname +this.lastname+this.username_db);
+
+  }
+  public static getParent(){
+    return this.firstname+" "+this.lastname+" "+this.username_db;
+  }
   
   public static scan(params){
-    AWS.config.update(this.config);
-    let dynamodb = new AWS.DynamoDB({ region: 'us-west-2' });
-    let docClient = new AWS.DynamoDB.DocumentClient();
-    
-    docClient.scan(params, function(err, data) {
-      if (err) {
-        console.log('err', err);
-      } else {
-        console.log(data.Items);
-      }
-    });
-  }
+    return new Promise((resolve, reject) => {
+   AWS.config.update(this.config);
+   let dynamodb = new AWS.DynamoDB({ region: 'us-west-2' });
+   let docClient = new AWS.DynamoDB.DocumentClient();
+   
+   docClient.scan(params, function(err, data) {
+     if (err) {
+       console.log('err', err);
+     } else {
+       resolve(data.Items);
+     }
+   });
+ })
+ }
   public static put(params){
     AWS.config.update(this.config);
     let dynamodb = new AWS.DynamoDB({ region: 'us-west-2' });
