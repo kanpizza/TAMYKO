@@ -12,8 +12,8 @@ export class DynamoDBService {
   static username_db = "";
   private static config = {
     region: 'us-west-2', 
-    accessKeyId: 'AKIAJ37ROVQJQIMDIDEA', 
-    secretAccessKey: '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'
+    accessKeyId: '', 
+    secretAccessKey: ''
   };
 
   public static setUsername(username,password){
