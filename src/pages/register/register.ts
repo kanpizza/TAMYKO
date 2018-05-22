@@ -12,7 +12,11 @@ import { HomePage } from '../home/home';
   templateUrl: 'register.html',
 })
 export class RegisterPage {
+<<<<<<< HEAD
 
+=======
+  todo: FormGroup;
+>>>>>>> ed18bcfc79399b2ba8ef325d6235358a04b8c8f5
   name_field = "";
   tel_field = "";
   id_field = "";
@@ -42,7 +46,7 @@ export class RegisterPage {
       //UpperCase/Number
       password_field: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(12), Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,12}$')])],
       confirm_password_filed: ['', Validators.required],
-    }, {validator: this.matchingPasswords('password_field', 'confirm_password_filed')}); 
+    }, {validator: this.matchingPasswords('password_field', 'confirm_password_filed')});
 
   }
 
@@ -73,7 +77,7 @@ export class RegisterPage {
     this.username_field = "";
     this.password_field = "";
     this.confirm_password_filed = "";
-    
+
 
   }
 
@@ -126,7 +130,10 @@ export class RegisterPage {
  
     }
 
+<<<<<<< HEAD
 
  
+=======
+>>>>>>> ed18bcfc79399b2ba8ef325d6235358a04b8c8f5
 
 }
