@@ -29,16 +29,17 @@
 </ion-header>
 
 
-<ion-content padding id="content">
+<ion-content no-padding id="content">
 
   <ion-card *ngFor="let kidDetail of kidDetails">
     <ion-item>
-      <ion-avatar item-start>
-        <img src="{{kidDetail.s3_url}}" >
-      </ion-avatar>
+      <ion-thumbnail item-start>
+        <img style="width:85px; height: 85px;" src="{{kidDetail.s3_url}}">
+    </ion-thumbnail>
       <h2>{{kidDetail.nickname}}</h2>
       <p>{{kidDetail.firstname}} {{kidDetail.lastname}}</p>
       <p>ป.{{kidDetail.class}}/{{kidDetail.room}}</p>
+    
     </ion-item>
     <ion-row>
       <ion-col>

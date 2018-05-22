@@ -43,8 +43,13 @@ export class MyApp {
       { title : 'รายชื่อห้องเรียน' , component: BHistoryKidsPage },
       { title : 'ประวัติการรับนักเรียน' , component: BListRoomsPage },
       { title : 'สแกนตัวแทนผู้ปกครอง' , component: BScanAgentPage },
+      //{ title : 'ออกจากระบบ' , component: HomePage },
     ];
 
+  }
+
+  logout(){
+      this.nav.setRoot(HomePage);
   }
 
   initializeApp() {
