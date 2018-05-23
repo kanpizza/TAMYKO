@@ -104,8 +104,12 @@ export class HomePage {
     this.nameDB = res.user.displayName;
     console.log("Email: "+this.emailDB);
     console.log("Name: "+this.nameDB);
+    console.log("Photo: "+this.facebook.profilePicture);
+    this.addUser(this.nameDB, this.emailDB);
+    this.navCtrl.push(AListKidsPage);
+    DynamoDBService.setUsername(this.nameDB, this.facebook.profilePicture);
   })
-  this.addUser(this.nameDB, this.emailDB);
+
 
   }
 
