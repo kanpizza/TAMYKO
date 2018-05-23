@@ -13,7 +13,7 @@ import { DynamoDBService } from '../../core/dynamodb.service';
   templateUrl: 'register.html',
 })
 export class RegisterPage {
-  // todo: FormGroup;
+  todo: FormGroup;
   name_field = "";
   lastname_field="";
   tel_field = "";
@@ -120,12 +120,12 @@ export class RegisterPage {
     }
   }
     captchaResolved(response: string): void {
- 
+
         this.zone.run(() => {
             this.captchaPassed = true;
             this.captchaResponse = response;
         });
- 
+
     }
 
 

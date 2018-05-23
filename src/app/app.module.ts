@@ -29,6 +29,20 @@ import { HttpClientModule } from '@angular/common/http';
 import { DynamoDBService } from '../core/dynamodb.service';
 import { RecaptchaModule } from 'ng-recaptcha';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import * as firebase from 'firebase';
+
+const firebase = {
+  apiKey: "AIzaSyChNNb_g9-pX6e9XTwWmvz9PWxh4k0YVIY",
+    authDomain: "fbloginionic.firebaseapp.com",
+    databaseURL: "https://fbloginionic.firebaseio.com",
+    projectId: "fbloginionic",
+    storageBucket: "fbloginionic.appspot.com",
+    messagingSenderId: "363540196923"
+};
+
 @NgModule({
   declarations: [
     MyApp,
@@ -52,7 +66,9 @@ import { RecaptchaModule } from 'ng-recaptcha';
     IonicModule.forRoot(MyApp),
     NgxQRCodeModule,
     HttpClientModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    AngularFireModule.initializeApp(firebase),
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

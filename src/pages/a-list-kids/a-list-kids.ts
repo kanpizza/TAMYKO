@@ -18,11 +18,14 @@ import { DynamoDBService } from '../../core/dynamodb.service';
 export class AListKidsPage {
   keyID = "";
   ListkidDetails: Array<>;
+  imgFB = "";
+  nameFB = "";
+  check = "NM";
 
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public modalCtrl: ModalController) {
-
+    this.showFBDetail();
   }
 
   openModal(){
@@ -116,6 +119,14 @@ export class AListKidsPage {
       }
     }
    DynamoDBService.put(params);
+  }
+
+  showFBDetail(){
+    this.nameFB = DynamoDBService.getUsername();
+    this.imgFB = DynamoDBService.getPassword();
+    this.check = "FB";
+    console.log("Get Username: "+this.nameFB);
+    console.log("Get Photo: "+this.imgFB);
   }
 
 
