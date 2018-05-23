@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { RegisterPage } from '../pages/register/register';
 import { AListKidsPage } from '../pages/a-list-kids/a-list-kids';
+import { AProfilePage } from '../pages/a-profile/a-profile';
 //import { AListFamilyPage } from '../pages/a-list-family/a-list-family';
 import { AHistoryKidsPage } from '../pages/a-history-kids/a-history-kids';
 import { AAgentPage } from '../pages/a-agent/a-agent';
@@ -35,6 +36,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
     ListPage,
     RegisterPage,
     AListKidsPage,
+    AProfilePage,
  //   AListFamilyPage,
     AHistoryKidsPage,
     AAgentPage,
@@ -59,6 +61,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
     ListPage,
     RegisterPage,
     AListKidsPage,
+    AProfilePage,
    // AListFamilyPage,
     AHistoryKidsPage,
     AAgentPage,

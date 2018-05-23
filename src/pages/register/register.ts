@@ -4,6 +4,7 @@ import { FormBuilder, Validators, FormControl,FormGroup} from '@angular/forms';
 import { Component, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HomePage } from '../home/home';
+import { DynamoDBService } from '../../core/dynamodb.service';
 
 
 @IonicPage()
@@ -14,6 +15,7 @@ import { HomePage } from '../home/home';
 export class RegisterPage {
   // todo: FormGroup;
   name_field = "";
+  lastname_field="";
   tel_field = "";
   id_field = "";
   email_field = "";
@@ -62,7 +64,7 @@ export class RegisterPage {
     console.log(this.username_field);
     console.log(this.password_field);
     console.log(this.confirm_password_filed);
-    // this.createUser();
+    this.createUser();
 
     this.name_field = "";
     this.tel_field = "";
@@ -82,27 +84,27 @@ export class RegisterPage {
 //    let docClient = new AWS.DynamoDB.DocumentClient();
 //  }
 
-  // createUser(){
-  //   var count = 1000000000;
-  //   let dynamoDb = new AWS.DynamoDB();
-  //   let docClient = new AWS.DynamoDB.DocumentClient();
-  //   var params = {
-  //     TableName: "Users",
-  //     Item: {
-  //       "id" : "2423423423",
-  //       "citizen_id" : this.id_field,
-  //       "role" : "1",
-  //       "firstname" : this.name_field,
-  //       "lastname" : this.lastname_field,
-  //       "email" : this.email_field,
-  //       "gender" : this.gender,
-  //       "birth_date" : this.myDate,
-  //       "username" : this.username_field,
-  //       "password" : this.password_field
-  //     }
-  //   }
-  //  DynamoDBService.put(params);
-  // }
+  async createUser(){
+    var count = 300000030;
+    let dynamoDb = new AWS.DynamoDB();
+    let docClient = new AWS.DynamoDB.DocumentClient();
+    var params = {
+      TableName: "Users",
+      Item: {
+        "id" : "3000000030",
+        "citizen_id" : this.id_field,
+        "role" : "3",
+        "firstname" : this.name_field,
+        "lastname" : this.lastname_field,
+        "email" : this.email_field,
+        "gender" : this.gender,
+        "birth_date" : this.myDate,
+        "username" : this.username_field,
+        "password" : this.password_field
+      }
+    }
+   await DynamoDBService.put(params);
+  }
 
   matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
     // TODO maybe use this https://github.com/yuyang041060120/ng2-validation#notequalto-1
