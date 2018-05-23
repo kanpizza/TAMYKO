@@ -17,9 +17,12 @@ import { DynamoDBService } from '../../core/dynamodb.service';
 })
 export class AListKidsPage {
   keyID = "";
-  
+  ListkidDetails: Array<>;
+
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public modalCtrl: ModalController) {
+
   }
 
   openModal(){
@@ -27,8 +30,8 @@ export class AListKidsPage {
     confirmModal.present();
   }
 
- 
-   
+
+
 
    addChildPrompt() {
     let prompt = this.alertCtrl.create({
@@ -39,7 +42,7 @@ export class AListKidsPage {
           name: 'KeyIDinput',
           placeholder: 'Key ID'
         }
-  
+
       ],
       buttons: [
         {
@@ -59,13 +62,41 @@ export class AListKidsPage {
     });
     prompt.present();
   }
-  
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChildPage');
+    this.getKidList("3000000005");
   }
-  getKidList(){
-  
-  }
+  async getKidList(userID){
+        let dynamoDb = new AWS.DynamoDB();
+        let docClient = new AWS.DynamoDB.DocumentClient();
+        var params = {
+            TableName : "Position",
+            FilterExpression : "ID_Parent = :ID_Parent",
+            ExpressionAttributeValues : {':ID_Parent': userID}
+        };
+
+        await DynamoDBService.scan(params).then((data => this.kidList = data));
+        // await console.log(this.employees.length);
+        await console.log(this.kidList[0].ID_Kid);
+        // for loop data to get ID_Kid
+        var i;
+        // for (i = 0; i < this.kidList.length; i++) {
+            // var id = this.kidList[i].ID_Kid;
+            var id = '2000000003';
+            // console.log(id);
+            var params2 = {
+              TableName : "Kids",
+              FilterExpression : "ID_Kid = :ID_Kid",
+              ExpressionAttributeValues : {':ID_Kid': id}
+            };
+            await DynamoDBService.scan(params2).then((data => this.kidDetails = data));
+            // await this.ListkidDetails[i] =  this.kidDetails;
+        // }
+
+        //make kidslist
+          await console.log(this.kidDetails);
+        }
 
 
   createKeyID(data){

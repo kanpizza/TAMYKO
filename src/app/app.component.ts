@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,18 +21,21 @@ import { BDetailPickKidsPage } from '../pages/b-detail-pick-kids/b-detail-pick-k
   templateUrl: 'app.html',
   
 })
-export class MyApp {
+export class MyApp implements OnInit{
+  this_user="";
+  ngOnInit(){
+    this.this_user = "tete";
+  }
+  
+  
   @ViewChild(Nav) nav: Nav;
 
   // rootPage: any = HomePage;
   public rootPage: any = HomePage;
-
-
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
-
     // used for an example of ngFor and navigation
     this.pages = [
       // { title: 'List', component: ListPage },
@@ -61,4 +64,5 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
 }
