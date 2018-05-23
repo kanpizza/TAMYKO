@@ -30,8 +30,34 @@
 
 <ion-content no-padding id="content">
 
-  <ion-card *ngFor="let kidDetail of kidDetails">
+  <ion-card *ngIf="check == 'FB'">
     <ion-item>
+      <ion-thumbnail item-start>
+        <img style="width:85px; height: 85px;" src="{{ imgFB }}">
+    </ion-thumbnail>
+      <h2>{{ nameFB }}</h2>
+
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left full>
+          <ion-icon name="share-alt"></ion-icon>
+          <div>รับเด็ก</div>
+        </button>
+      </ion-col>
+
+       <ion-col>
+        <button ion-button icon-left outline full (click)="showDetails()">
+          <ion-icon name="paper"></ion-icon>
+          <div>รายละเอียด</div>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+
+  <ion-card *ngFor="let kidDetail of kidDetails">
+    <ion-item  *ngIf="check == 'NM'">
       <ion-thumbnail item-start>
         <img style="width:85px; height: 85px;" src="{{kidDetail.s3_url}}">
     </ion-thumbnail>
@@ -40,7 +66,7 @@
       <p>ป.{{kidDetail.class}}/{{kidDetail.room}}</p>
 
     </ion-item>
-    <ion-row>
+    <ion-row  *ngIf="check == 'NM'">
       <ion-col>
         <button ion-button icon-left full>
           <ion-icon name="share-alt"></ion-icon>

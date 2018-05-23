@@ -12,7 +12,7 @@ import { HomePage } from '../home/home';
   templateUrl: 'register.html',
 })
 export class RegisterPage {
-  // todo: FormGroup;
+  todo: FormGroup;
   name_field = "";
   tel_field = "";
   id_field = "";

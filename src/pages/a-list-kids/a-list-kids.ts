@@ -20,7 +20,7 @@ export class AListKidsPage {
   ListkidDetails: Array<>;
   imgFB = "";
   nameFB = "";
-  bool = false;
+  check = "NM";
 
 
 
@@ -124,7 +124,7 @@ export class AListKidsPage {
   showFBDetail(){
     this.nameFB = DynamoDBService.getUsername();
     this.imgFB = DynamoDBService.getPassword();
-    this.bool = true;
+    this.check = "FB";
     console.log("Get Username: "+this.nameFB);
     console.log("Get Photo: "+this.imgFB);
   }
