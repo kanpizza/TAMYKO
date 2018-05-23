@@ -118,12 +118,12 @@ export class RegisterPage {
     }
   }
     captchaResolved(response: string): void {
- 
+
         this.zone.run(() => {
             this.captchaPassed = true;
             this.captchaResponse = response;
         });
- 
+
     }
 
 
