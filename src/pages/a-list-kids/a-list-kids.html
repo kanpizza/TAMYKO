@@ -28,19 +28,6 @@
     </ion-navbar>
 </ion-header>
 
-
-<<<<<<< HEAD
-<ion-content padding id="content">
-
-  <ion-card *ngFor="let kidDetail of kidDetails">
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="{{kidDetail.s3_url}}" width="80" height="80" >
-      </ion-avatar>
-      <h2>{{kidDetail.nickname}}</h2>
-      <p>{{kidDetail.firstname}} {{kidDetail.lastname}}</p>
-      <p>ป.{{kidDetail.class}}/{{kidDetail.room}}</p>
-=======
 <ion-content no-padding id="content">
 
   <ion-card *ngFor="let kidDetail of kidDetails">
@@ -51,8 +38,7 @@
       <h2>{{kidDetail.nickname}}</h2>
       <p>{{kidDetail.firstname}} {{kidDetail.lastname}}</p>
       <p>ป.{{kidDetail.class}}/{{kidDetail.room}}</p>
-    
->>>>>>> 65d2864fa041d5508d2bdc8be53cc3eff336499e
+
     </ion-item>
     <ion-row>
       <ion-col>

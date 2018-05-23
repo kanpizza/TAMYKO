@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { DynamoDBService } from '../../core/dynamodb.service';
 
 /**
  * Generated class for the AHistoryKidsPage page.
@@ -20,6 +21,9 @@ export class AHistoryKidsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AHistoryKidsPage');
+  }
+  getUser(){
+    console.log(DynamoDBService.getParent());
   }
 
 }

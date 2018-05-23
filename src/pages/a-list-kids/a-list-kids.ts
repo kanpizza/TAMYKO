@@ -30,6 +30,11 @@ export class AListKidsPage {
     confirmModal.present();
   }
 
+  showDetails(){
+    console.log("showDetails");
+    const detailKidsModal = this.modalCtrl.create('AListFamilyPage');
+    detailKidsModal.present();
+  }
 
 
 

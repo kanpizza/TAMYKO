@@ -36,7 +36,7 @@ export class DynamoDBService {
 
   }
   public static getParent(){
-    return this.firstname+" "+this.lastname+" "+this.username_db;
+    return "get   "+this.firstname+" "+this.lastname+" "+this.username_db;
   }
   
   public static scan(params){
@@ -47,7 +47,7 @@ export class DynamoDBService {
    
    docClient.scan(params, function(err, data) {
      if (err) {
-       console.log('err', err);
+       reject(err);
      } else {
        resolve(data.Items);
      }

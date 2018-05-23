@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 
 import { RegisterPage } from '../register/register';
 import { AListKidsPage } from '../a-list-kids/a-list-kids';
@@ -12,27 +13,59 @@ import { DynamoDBService } from '../../core/dynamodb.service';
 export class HomePage {
   username_field="";
   password_field="";
-  constructor(public navCtrl: NavController) {
+  data_parent;
+  constructor(public navCtrl: NavController,private alertCtrl: AlertController) {
 
   }
   register(){
     this.navCtrl.push(RegisterPage);
   }
-  login(){
+  checkInvalid(){
+    let alert = this.alertCtrl.create({
+      title: 'Can not Login',
+      message: 'username or password invalid',
+      buttons: [
+        {
+          text: 'OK',
+          role: 'OK',
+          handler: () => {
+            console.log('ok button');
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+  async login(){
     //this.navCtrl.push(AListKidsPage);
     //this.navCtrl.setRoot(AListKidsPage);
     // DynamoDBService.setUsername(this.username_field,this.password_field);
-    console.log('rrr = '+this.username_field);
-    console.log('rrr = '+this.password_field);
+    console.log('username  = '+this.username_field);
+    console.log('password  = '+this.password_field);
+    if(this.username_field==""||this.password_field==""){
+      this.checkInvalid();
+    }
+    else {
     var params = {
       TableName : "Users",
       FilterExpression : "username = :username AND password = :password",
       ExpressionAttributeValues : {':username': this.username_field,':password': this.password_field}
-  };
-  DynamoDBService.scan(params);
+    };
+    await DynamoDBService.scan(params).then(
+      (data) => {
+        this.data_parent = data[0];
+      }
+    );
+    await console.log(this.data_parent);
+    await DynamoDBService.setParent(this.data_parent);
+    await console.log(DynamoDBService.getParent());
   this.checkUser();
-  }
+  }}
   checkUser(){
+    //this.navCtrl.push(AListKidsPage);
+    if (this.data_parent== null){
+      alert('tetetet');
+    }
     this.navCtrl.setRoot(AListKidsPage);
   }
 //   async getItems(){
