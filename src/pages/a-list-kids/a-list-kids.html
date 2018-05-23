@@ -9,7 +9,6 @@
 
 <!--
   Generated template for the ChildPage page.
-
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
@@ -30,6 +29,7 @@
 </ion-header>
 
 
+<<<<<<< HEAD
 <ion-content padding id="content">
 
   <ion-card *ngFor="let kidDetail of kidDetails">
@@ -40,12 +40,32 @@
       <h2>{{kidDetail.nickname}}</h2>
       <p>{{kidDetail.firstname}} {{kidDetail.lastname}}</p>
       <p>ป.{{kidDetail.class}}/{{kidDetail.room}}</p>
+=======
+<ion-content no-padding id="content">
+
+  <ion-card *ngFor="let kidDetail of kidDetails">
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img style="width:85px; height: 85px;" src="{{kidDetail.s3_url}}">
+    </ion-thumbnail>
+      <h2>{{kidDetail.nickname}}</h2>
+      <p>{{kidDetail.firstname}} {{kidDetail.lastname}}</p>
+      <p>ป.{{kidDetail.class}}/{{kidDetail.room}}</p>
+    
+>>>>>>> 65d2864fa041d5508d2bdc8be53cc3eff336499e
     </ion-item>
     <ion-row>
       <ion-col>
-        <button ion-button icon-left  full>
+        <button ion-button icon-left full>
           <ion-icon name="share-alt"></ion-icon>
           <div>รับเด็ก</div>
+        </button>
+      </ion-col>
+
+       <ion-col>
+        <button ion-button icon-left outline full (click)="showDetails()">
+          <ion-icon name="paper"></ion-icon>
+          <div>รายละเอียด</div>
         </button>
       </ion-col>
     </ion-row>
