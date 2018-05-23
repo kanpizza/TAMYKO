@@ -1,18 +1,28 @@
+<!--
+  Generated template for the AProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
-  <ion-navbar color="purple">
-    <ion-title>Register</ion-title>
+
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>ข้อมูลส่วนตัว</ion-title>
   </ion-navbar>
+
 </ion-header>
 
-<ion-content padding class="body">
-  <img alt="logo" src="../assets/imgs/logo2.png" class="logoImage">
-  
-   <form [formGroup]="todo" (ngSubmit)="regisForm()">
+
+<ion-content padding>
+  <form [formGroup]="todo" (ngSubmit)="regisForm()" *ngFor="let u of user_list">
       <ion-item no-lines class="body">
         ชื่อ
       </ion-item>
       <ion-item>
-        <ion-input type="text" formControlName="name_field" [(ngModel)]="name_field" ></ion-input>
+        <ion-input type="text" formControlName="name_field" [(ngModel)]="u.firstname"></ion-input>
       </ion-item>
 
        <p ion-text *ngIf="!todo.controls.name_field.valid  && (todo.controls.name_field.dirty )" color="danger" >*กรุณากรอกชื่อให้ถูกต้อง</p>
@@ -21,61 +31,43 @@
         นามสกุล
       </ion-item>
       <ion-item>
-        <ion-input type="text" formControlName="lastname_field" [(ngModel)]="lastname_field"></ion-input>
+        <ion-input type="text" formControlName="lastname_field" [(ngModel)]="u.lastname"></ion-input>
       </ion-item>
       <p ion-text *ngIf="!todo.controls.lastname_field.valid  && (todo.controls.lastname_field.dirty )" color="danger" >*กรุณากรอกนามสกุลให้ถูกต้อง</p>
       <ion-item no-lines class="body">
       เบอร์โทรศัพท์
       </ion-item>
       <ion-item>
-        <ion-input type="number" formControlName="tel_field" [(ngModel)]="tel_field"></ion-input>
+        <ion-input type="text" formControlName="tel_field" [(ngModel)]="u.tel"></ion-input>
       </ion-item>
       <p ion-text *ngIf="!todo.controls.tel_field.valid  && (todo.controls.tel_field.dirty )" color="danger" >*กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง</p>
       <ion-item no-lines class="body">
         เลขบัตรประชาชน
       </ion-item>
       <ion-item>
-        <ion-input type="number" formControlName="id_field" [(ngModel)]="id_field"></ion-input>
+        <ion-input type="text" formControlName="id_field" [(ngModel)]="u.citizen_id"></ion-input>
       </ion-item>
       <p ion-text *ngIf="!todo.controls.id_field.valid  && (todo.controls.id_field.dirty )" color="danger" >*กรุณากรอกบัตรประชาชนให้ถูกต้อง</p>
       <ion-item no-lines class="body">
         อีเมล์
       </ion-item>
       <ion-item>
-        <ion-input  formControlName="email_field" [(ngModel)]="email_field"></ion-input>
+        <ion-input  formControlName="email_field" [(ngModel)]="u.email" ></ion-input>
       </ion-item>
       <p ion-text *ngIf="!todo.controls.email_field.valid  && (todo.controls.email_field.dirty )" color="danger" >*กรุณากรอกอีเมล์ให้ถูกต้อง</p>
-
-
-     <ion-item no-lines class="body">
-        เพศ
-      </ion-item>
-      <ion-list radio-group formControlName="gender" [(ngModel)]="gender">
-      
-      <ion-item>
-        <ion-label>ชาย</ion-label>
-        <ion-radio value="M"></ion-radio>
-      </ion-item>
-      
-      <ion-item>
-        <ion-label>หญิง</ion-label>
-        <ion-radio value="F"></ion-radio>
-      </ion-item>
-      <p ion-text *ngIf="!todo.controls.gender.valid  && (todo.controls.gender.dirty )" color="danger" >*กรุณากรอกเพศให้ถูกต้อง</p>
-    </ion-list>
     <ion-item no-lines class="body">
         วันเกิด
     </ion-item>
     <ion-item>
       <ion-label>MM/DD/YYYY</ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY" formControlName="myDate"[(ngModel)]="myDate"></ion-datetime>
+      <ion-datetime displayFormat="MM/DD/YYYY" formControlName="myDate"[(ngModel)]="u.birth_date"></ion-datetime>
     </ion-item>
     <p ion-text *ngIf="!todo.controls.myDate.valid  && (todo.controls.myDate.dirty )" color="danger" >*ไม่สามารถใส่ตัวอักษรพิเศษได้</p>
     <ion-item no-lines class="body">
       ชื่อผู้ใช้
     </ion-item>
     <ion-item>
-      <ion-input name formControlName="username_field" [(ngModel)]="username_field"></ion-input>
+      <ion-input name formControlName="username_field" [(ngModel)]="u.username"></ion-input>
     </ion-item>
     <p ion-text *ngIf="!todo.controls.username_field.valid  && (todo.controls.username_field.dirty )" color="danger" >*กรุณากรอกชื่อผู้ใช้ให้ถูกต้อง</p>
     <ion-item no-lines class="body">
@@ -89,20 +81,14 @@
       ยืนยันรหัสผ่าน
     </ion-item>
     <ion-item>
-      <ion-input confirmPass type="password" formControlName="confirm_password_filed" [(ngModel)]="confirm_password_filed"></ion-input>
+      <ion-input confirmPass type="password" formControlName="confirm_password_filed"></ion-input>
     </ion-item>
     <p ion-text *ngIf="todo.controls.confirm_password_filed.touched && todo.hasError('mismatchedPasswords') && todo.controls.password_field.valid" color="danger" >*กรุณากรอกรหัสผ่านให้ตรงกัน</p>
-      <ion-col col-3 text-center>
-      <div class="center">
-        <re-captcha (resolved)="captchaResolved($event)" siteKey="6Lf3-lkUAAAAANnjgC7_RAwKZ2pA7LplldSJ-bme"></re-captcha>
-        <br>
-        <button ion-button color="danger" (click)="changePage('HomePage')">ยกเลิก</button>
-        <button ion-button color="secondary" type="submit" [disabled]="!todo.valid || !captchaPassed" (click)="register()">ยืนยัน</button>
-        
-      </div>
-    </ion-col>
    
     </form>
-
+    <ion-col col-3 text-center>
+      <div class="center">
+        <button ion-button color="btn" (click)="submitUpdate()" >ยืนยัน</button>
+      </div>
+    </ion-col>
 </ion-content>
-
