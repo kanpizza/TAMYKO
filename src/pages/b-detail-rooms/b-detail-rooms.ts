@@ -47,6 +47,7 @@ export class BDetailRoomsPage {
 
 
    ionViewDidLoad() : void {
+    this.getClassRoom();
     this.getHistory();
     console.log('ionViewDidLoad DetailRoomPage');
    }

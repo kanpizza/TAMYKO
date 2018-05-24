@@ -44,9 +44,9 @@ export class BListRoomsPage {
     await DynamoDBService.scan(params).then((data => this.room_list= data));
     this.class = this.room_list[0].class;
     this.room = this.room_list[0].room;
-    await console.log(this.room_list[0].class);
-    await DynamoDBService.setRoom(this.room_list[0]);
     
+    await DynamoDBService.setRoom(this.room_list[0]);
+    await console.log(this.room_list[0]+"  room list");
   }
   
 

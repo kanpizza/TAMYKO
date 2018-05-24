@@ -1,6 +1,23 @@
 page-b-detail-rooms {
 
+.header .col {
+    background-color:lightgrey;
+}
 
+.col {
+    border: solid 1px grey;
+    border-bottom-style: none;
+    border-right-style: none;
+   
+}
+
+.col:last-child {
+    border-right: solid 1px grey;
+}
+
+.row:last-child .col {
+    border-bottom: solid 1px grey;
+}
 }
 
 
@@ -14,7 +31,7 @@ table {
      0px 10px 20px rgba(0,0,0,0.05),
      0px 20px 20px rgba(0,0,0,0.05),
      0px 30px 20px rgba(0,0,0,0.05);
-  tr {
+  .col,tr {
      &:hover {
       background: #f4f4f4;
       
@@ -23,13 +40,13 @@ table {
       }
     }
   }
-  th, td {
+  .row header,th, td {
     color: #999;
     border: 1px solid #eee;
     padding: 12px 20px;
     
   }
-  th {
+  .row header,th {
     background: #00cccc;
     color: #fff;
     text-transform: uppercase;
