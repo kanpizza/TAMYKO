@@ -3,6 +3,7 @@ import { AlertController } from 'ionic-angular';
 
 import { RegisterPage } from '../register/register';
 import { AListKidsPage } from '../a-list-kids/a-list-kids';
+import { BListRoomsPage } from '../b-list-rooms/b-list-rooms';
 
 import { DynamoDBService } from '../../core/dynamodb.service';
 
@@ -80,14 +81,18 @@ export class HomePage {
     await console.log(this.data_parent);
     await DynamoDBService.setParent(this.data_parent);
     await console.log(DynamoDBService.getParent());
-  this.checkUser();
+  this.checkUser(this.data_parent.id);
   }}
-  checkUser(){
+  checkUser(id){
     //this.navCtrl.push(AListKidsPage);
-    if (this.data_parent== null){
-      alert('tetetet');
+    console.log("id :"+id[0]);
+    if(id[0]=="3"){
+      this.navCtrl.setRoot(AListKidsPage);
     }
-    this.navCtrl.setRoot(AListKidsPage);
+    if(id[0]=="1"){
+      this.navCtrl.setRoot(BListRoomsPage);
+    }
+    
   }
 
 

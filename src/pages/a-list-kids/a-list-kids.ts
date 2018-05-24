@@ -17,10 +17,12 @@ import { DynamoDBService } from '../../core/dynamodb.service';
 })
 export class AListKidsPage {
   keyID = "";
-  ListkidDetails: Array<>;
+  ListkidDetails = new Array();
   imgFB = "";
   nameFB = "";
   check = "NM";
+  kidList;
+  kidDetails;
 
 
 

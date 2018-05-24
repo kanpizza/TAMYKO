@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams , ViewController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-
+import { DynamoDBService } from '../../core/dynamodb.service';
+import * as AWS from 'aws-sdk';
 /**
  * Generated class for the BDetailRoomsPage page.
  *
@@ -25,10 +26,12 @@ export class BDetailRoomsPage {
    public config : Config;
    public columns : any;
    public rows : any;
-
-
+    test={};
+    class;
+    room;
+    test_list: Array<String>;
   constructor(public navCtrl: NavController, public navParams: NavParams ,private _HTTP: HttpClient) {
-
+    this.getClassRoom();
          this.columns = [
         { prop: 'เวลา' },
         { prop: 'ชื่อนักเรียน' },
@@ -50,6 +53,29 @@ export class BDetailRoomsPage {
       });
     console.log('ionViewDidLoad DetailRoomPage');
    }
+   getClassRoom(){
+    this.class = DynamoDBService.getClass();
+    this.room = DynamoDBService.getRoom();
+    console.log('p. '+this.class+"/"+this.room);
+    this. getDetail();
+    }
+  async  getDetail(){
+    console.log("class : "+this.class);
+    console.log("room : "+this.room);
+    let dynamoDb = new AWS.DynamoDB();
+    let docClient = new AWS.DynamoDB.DocumentClient();
+    var params = {
+      TableName : "History",
+      FilterExpression : "Number = :Number",
+      ExpressionAttributeValues : {':Number': "0"}
+    };
+    await DynamoDBService.scan(params).then(
+      (data) => {
+        this.test = data;
+      }
+    );
+    await console.log(this.test);
+  }
 
 
 }

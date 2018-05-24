@@ -6,12 +6,6 @@
         <ion-icon name="menu"></ion-icon>
       </button>
       <ion-title>บุตรหลาน
-      <ion-item>
-        <ion-avatar item-start>
-          <img src="{{ imgFB }}">
-        </ion-avatar>
-        <h2>{{ nameFB }}</h2>
-      </ion-item>
     </ion-title>
         <ion-buttons end>
            <button ion-button clear block (click)="addChildPrompt()" >
@@ -22,7 +16,12 @@
 </ion-header>
 
 <ion-content no-padding id="content">
-  
+  <ion-item>
+    <ion-avatar item-start>
+      <img src="{{ imgFB }}">
+    </ion-avatar>
+    <h2>{{ nameFB }}</h2>
+  </ion-item>
 
   <ion-card *ngFor="let kidDetail of kidDetails">
     <ion-item>

@@ -32,7 +32,6 @@ import { RecaptchaModule } from 'ng-recaptcha';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import * as firebase from 'firebase';
 
 const firebase = {
   apiKey: "AIzaSyChNNb_g9-pX6e9XTwWmvz9PWxh4k0YVIY",
