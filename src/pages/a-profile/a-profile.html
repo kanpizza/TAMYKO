@@ -19,76 +19,76 @@
 <ion-content padding>
   <form [formGroup]="todo" (ngSubmit)="regisForm()" *ngFor="let u of user_list">
       <ion-item no-lines class="body">
-        ชื่อ
+        Firstname
       </ion-item>
       <ion-item>
         <ion-input type="text" formControlName="name_field" [(ngModel)]="u.firstname"></ion-input>
       </ion-item>
 
-       <p ion-text *ngIf="!todo.controls.name_field.valid  && (todo.controls.name_field.dirty )" color="danger" >*กรุณากรอกชื่อให้ถูกต้อง</p>
+       <p ion-text *ngIf="!todo.controls.name_field.valid  && (todo.controls.name_field.dirty )" color="danger" >*Please enter your firstname correctly</p>
 
       <ion-item no-lines class="body">
-        นามสกุล
+        lastname
       </ion-item>
       <ion-item>
         <ion-input type="text" formControlName="lastname_field" [(ngModel)]="u.lastname"></ion-input>
       </ion-item>
-      <p ion-text *ngIf="!todo.controls.lastname_field.valid  && (todo.controls.lastname_field.dirty )" color="danger" >*กรุณากรอกนามสกุลให้ถูกต้อง</p>
+      <p ion-text *ngIf="!todo.controls.lastname_field.valid  && (todo.controls.lastname_field.dirty )" color="danger" >*Please enter your lastname correctly</p>
       <ion-item no-lines class="body">
-      เบอร์โทรศัพท์
+      Telephone
       </ion-item>
       <ion-item>
         <ion-input type="text" formControlName="tel_field" [(ngModel)]="u.tel"></ion-input>
       </ion-item>
-      <p ion-text *ngIf="!todo.controls.tel_field.valid  && (todo.controls.tel_field.dirty )" color="danger" >*กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง</p>
+      <p ion-text *ngIf="!todo.controls.tel_field.valid  && (todo.controls.tel_field.dirty )" color="danger" >*Please enter your telephone correctly</p>
       <ion-item no-lines class="body">
-        เลขบัตรประชาชน
+        Citizen ID
       </ion-item>
       <ion-item>
         <ion-input type="text" formControlName="id_field" [(ngModel)]="u.citizen_id"></ion-input>
       </ion-item>
-      <p ion-text *ngIf="!todo.controls.id_field.valid  && (todo.controls.id_field.dirty )" color="danger" >*กรุณากรอกบัตรประชาชนให้ถูกต้อง</p>
+      <p ion-text *ngIf="!todo.controls.id_field.valid  && (todo.controls.id_field.dirty )" color="danger" >*Please enter your citizen id correctly</p>
       <ion-item no-lines class="body">
-        อีเมล์
+        E-mail
       </ion-item>
       <ion-item>
         <ion-input  formControlName="email_field" [(ngModel)]="u.email" ></ion-input>
       </ion-item>
-      <p ion-text *ngIf="!todo.controls.email_field.valid  && (todo.controls.email_field.dirty )" color="danger" >*กรุณากรอกอีเมล์ให้ถูกต้อง</p>
+      <p ion-text *ngIf="!todo.controls.email_field.valid  && (todo.controls.email_field.dirty )" color="danger" >*Please enter your e-mail correctly</p>
     <ion-item no-lines class="body">
-        วันเกิด
+        Birthdate
     </ion-item>
     <ion-item>
       <ion-label>MM/DD/YYYY</ion-label>
       <ion-datetime displayFormat="MM/DD/YYYY" formControlName="myDate"[(ngModel)]="u.birth_date"></ion-datetime>
     </ion-item>
-    <p ion-text *ngIf="!todo.controls.myDate.valid  && (todo.controls.myDate.dirty )" color="danger" >*ไม่สามารถใส่ตัวอักษรพิเศษได้</p>
+    <p ion-text *ngIf="!todo.controls.myDate.valid  && (todo.controls.myDate.dirty )" color="danger" >*You can't fill special alphabet้</p>
     <ion-item no-lines class="body">
-      ชื่อผู้ใช้
+      Username
     </ion-item>
     <ion-item>
       <ion-input name formControlName="username_field" [(ngModel)]="u.username"></ion-input>
     </ion-item>
-    <p ion-text *ngIf="!todo.controls.username_field.valid  && (todo.controls.username_field.dirty )" color="danger" >*กรุณากรอกชื่อผู้ใช้ให้ถูกต้อง</p>
+    <p ion-text *ngIf="!todo.controls.username_field.valid  && (todo.controls.username_field.dirty )" color="danger" >*Please enter your username correctly</p>
     <ion-item no-lines class="body">
-      รหัสผ่าน
+      Password
     </ion-item>
     <ion-item>
       <ion-input pass type="password" formControlName="password_field" [(ngModel)]="password_field"></ion-input>
     </ion-item>
-    <p ion-text *ngIf="!todo.controls.password_field.valid  && (todo.controls.password_field.dirty )" color="danger" >*กรุณากรอกรหัสผ่านให้ถูกต้อง</p>
+    <p ion-text *ngIf="!todo.controls.password_field.valid  && (todo.controls.password_field.dirty )" color="danger" >*Please enter your password correctly</p>
     <ion-item no-lines class="body">
-      ยืนยันรหัสผ่าน
+      Confirm Password
     </ion-item>
     <ion-item>
       <ion-input confirmPass type="password" formControlName="confirm_password_filed"></ion-input>
     </ion-item>
-    <p ion-text *ngIf="todo.controls.confirm_password_filed.touched && todo.hasError('mismatchedPasswords') && todo.controls.password_field.valid" color="danger" >*กรุณากรอกรหัสผ่านให้ตรงกัน</p>
-   
+    <p ion-text *ngIf="todo.controls.confirm_password_filed.touched && todo.hasError('mismatchedPasswords') && todo.controls.password_field.valid" color="danger" >*Password doesn't match</p>
+
     </form>
     <ion-col col-3 text-center>
       <div class="center">
-        <button ion-button color="btn" (click)="submitUpdate()" >ยืนยัน</button>
+        <button ion-button color="btn" (click)="submitUpdate()" >Confirm</button>
       </div>
     </ion-col>
 </ion-content>

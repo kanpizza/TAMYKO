@@ -1,16 +1,16 @@
 <ion-header>
-    
+
       <ion-navbar>
          <button ion-button menuToggle>
           <ion-icon name="menu"></ion-icon>
         </button>
         <ion-title>parentAgent</ion-title>
       </ion-navbar>
-    
+
     </ion-header>
-    
-    
-    
+
+
+
     <ion-content padding>
       <ion-grid>
           <ion-row>
@@ -30,12 +30,12 @@
         <ion-row>
             <ion-label fixed>Your National ID</ion-label>
         </ion-row>
-  
+
         <ion-item>
           <ion-input type="text"></ion-input>
         </ion-item>
 
-          
+
         <ion-row>
             <ion-label fixed>choose Students</ion-label>
         </ion-row>
@@ -48,26 +48,26 @@
             </ion-select>
           </ion-item>
 
-       
+
 
 
         <ion-item padding text-center>
-            <button default ion-button text-center color="light" (click)="createCode()">รับ QR CODE</button>
+            <button default ion-button text-center color="light" (click)="createCode()">Get QR CODE</button>
         </ion-item>
-    
-        <ion-card *ngIf="createdCode"> 
+
+        <ion-card *ngIf="createdCode">
         <ngx-qrcode [qrc-value]="createdCode"></ngx-qrcode>
         <ion-card-content>
           <div *ngIf="saveButton" text-center>
-            <button default ion-button text-center color="light" >บันทึก</button>
+            <button default ion-button text-center color="light" >/save</button>
           </div>
         </ion-card-content>
       </ion-card>
 
-      
-    
+
+
     </ion-content>
-    
+
     <ion-footer>
       <ion-toolbar >
         <ion-title text-center>TAKE MY KIDS OUT</ion-title>
