@@ -11,8 +11,8 @@ export class DynamoDBService {
   static lastname = "";
   static username_db = "";
   private static config = {
-    region: 'us-west-2', 
-    accessKeyId: '', 
+    region: 'us-west-2',
+    accessKeyId: '',
     secretAccessKey: ''
   };
 
@@ -38,13 +38,13 @@ export class DynamoDBService {
   public static getParent(){
     return "get   "+this.firstname+" "+this.lastname+" "+this.username_db;
   }
-  
+
   public static scan(params){
     return new Promise((resolve, reject) => {
    AWS.config.update(this.config);
    let dynamodb = new AWS.DynamoDB({ region: 'us-west-2' });
    let docClient = new AWS.DynamoDB.DocumentClient();
-   
+
    docClient.scan(params, function(err, data) {
      if (err) {
        reject(err);
