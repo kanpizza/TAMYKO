@@ -15,8 +15,8 @@ export class DynamoDBService {
   static id="";
   private static config = {
     region: 'us-west-2',
-    accessKeyId: '',
-    secretAccessKey: ''
+    accessKeyId: 'AKIAJ37ROVQJQIMDIDEA',
+    secretAccessKey: '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'
   };
 
   public static setUsername(username,password){
@@ -42,6 +42,15 @@ export class DynamoDBService {
   public static getParent(){
     return this.username_db;
   }
+  public static getFirstname(){
+    return this.firstname;
+  }
+  public static getLastname(){
+    return this.lastname;
+  }
+  public static getId(){
+    return this.id;
+  }
 
   public static setRoom(room_list){
       this.class = room_list.class;
@@ -57,7 +66,7 @@ export class DynamoDBService {
   public static getClass(){
     return this.class ;
   }
- 
+
 
   public static scan(params){
     return new Promise((resolve, reject) => {

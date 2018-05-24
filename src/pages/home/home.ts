@@ -10,7 +10,7 @@ import { DynamoDBService } from '../../core/dynamodb.service';
 
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
-import firebase from 'firebase';
+// import firebase from 'firebase';
 
 import * as AWS from 'aws-sdk';
 
@@ -92,7 +92,7 @@ export class HomePage {
     if(id[0]=="1"){
       this.navCtrl.setRoot(BListRoomsPage);
     }
-    
+
   }
 
 
