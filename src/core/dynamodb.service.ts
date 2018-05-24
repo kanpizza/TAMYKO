@@ -14,9 +14,8 @@ export class DynamoDBService {
   static room="";
   static id="";
   private static config = {
-    region: 'us-west-2', 
-    accessKeyId: 'AKIAJ37ROVQJQIMDIDEA', 
-    secretAccessKey: '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'
+    accessKeyId: '',
+    secretAccessKey: ''
   };
 
   public static setUsername(username,password){
@@ -42,6 +41,7 @@ export class DynamoDBService {
   public static getParent(){
     return this.username_db;
   }
+<<<<<<< HEAD
   public static setRoom(room_list){
       this.class = room_list.class;
       this.room = room_list.room;
@@ -57,12 +57,15 @@ export class DynamoDBService {
     return this.class ;
   }
   
+=======
+
+>>>>>>> faeef5a82b81afe0cee230a0caa42e4fd9345018
   public static scan(params){
     return new Promise((resolve, reject) => {
    AWS.config.update(this.config);
    let dynamodb = new AWS.DynamoDB({ region: 'us-west-2' });
    let docClient = new AWS.DynamoDB.DocumentClient();
-   
+
    docClient.scan(params, function(err, data) {
      if (err) {
        reject(err);

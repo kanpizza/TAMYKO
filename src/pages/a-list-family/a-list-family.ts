@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ModalController, ViewController } from 'ionic-angular';
-
+import * as AWS from 'aws-sdk';
+import { DynamoDBService } from '../../core/dynamodb.service';
 import { HttpClient } from '@angular/common/http';
 
 /**
@@ -10,45 +11,117 @@ import { HttpClient } from '@angular/common/http';
 * Ionic pages and navigation.
 */
 
-
+export interface Config {
+  detailRoom: string;
+}
 
 @IonicPage()
 @Component({
   selector: 'page-a-list-family',
   templateUrl: 'a-list-family.html',
 })
+
 export class AListFamilyPage {
   public config : Config;
   public columns : any;
   public rows : any;
+  ListparentDetails = new Array();
+  ListHistory = new Array();
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public modalCtrl: ModalController,public viewCtrl:ViewController,private _HTTP: HttpClient) {
-    this.columns = [
-    { prop: 'เวลา' },
-    { prop: 'ชื่อนักเรียน' },
-    { prop: 'ชื่อผู้ปกครอง' },
-    { prop: 'อนุญาต' },
-    { prop: 'ไม่อนุญาต' },
-    ];
+      this.columns = [
+      { prop: 'เวลา' },
+      { prop: 'ชื่อนักเรียน' },
+      { prop: 'ชื่อผู้ปกครอง' },
+      { prop: 'อนุญาต' },
+      { prop: 'ไม่อนุญาต' },
+      ];
   }
 
 ionViewDidLoad() : void {
-this._HTTP
-.get<Config>('../../assets/data/DetailRoom.json')
-.subscribe((data) =>
-{
-this.rows = data.details;
-});
-console.log('ionViewDidLoad DetailsPage');
+
+    this.getKid("3000000005");
+    //this.getParent("2000000004");
+    console.log('ionViewDidLoad DetailsPage');
 }
 
-  openModal(){
-    const addModal = this.modalCtrl.create('AAddFamilyPage');
-    addModal.present();
-  }
+//  openModal(){
+//   const addModal = this.modalCtrl.create('AAddFamilyPage');
+//    addModal.present();
+//  }
 
+    async getParent(kidID){
+        let dynamoDb = new AWS.DynamoDB();
+        let docClient = new AWS.DynamoDB.DocumentClient();
+        var params = {
+            TableName : "Position",
+            FilterExpression : "ID_Parent = :ID_Parent",
+            ExpressionAttributeValues : {':ID_Kid': kidID}
+        };
 
+        await DynamoDBService.scan(params).then((data => this.parentList = data));
+        // await console.log(this.employees.length);
+        await console.log(this.parentList[0].ID_Parent);
+        // for loop data to get ID_Kid
+
+        }
+   
 
 dismiss() {
     this.viewCtrl.dismiss();
   }
+
+
+    async getKid(userID){
+        let dynamoDb = new AWS.DynamoDB();
+        let docClient = new AWS.DynamoDB.DocumentClient();
+        
+        var kidId = '2000000003';
+
+            var params = {
+              TableName : "Kids",
+              FilterExpression : "ID_Kid = :ID_Kid",
+              ExpressionAttributeValues : {':ID_Kid': kidId}
+            };
+            await DynamoDBService.scan(params).then((data => this.kidDetails = data));
+    
+
+        var params2 = {
+            TableName : "Priority",
+            FilterExpression : "Kids_id = :Kids_id",
+            ExpressionAttributeValues : {':Kids_id': kidId}
+        };
+         await DynamoDBService.scan(params2).then((data => this.parent = data));
+         console.log('num '+this.parent.length);
+
+         var i;
+         for (i = 0; i < this.parent.length; i++) {
+            console.log("name --> "+this.parent[i].Parent_id);
+         
+            var params3 = {
+              TableName : "Users",
+              FilterExpression : "id = :id",
+              ExpressionAttributeValues : {':id': this.parent[i].Parent_id}
+          };
+            await DynamoDBService.scan(params3).then((data => this.parentDetail = data));
+            await this.ListparentDetails.push(this.parentDetail[0]);
+            console.log(this.parentDetail[0].firstname);
+          }
+
+
+        var params4 = {
+            TableName : "History",
+            FilterExpression : "kids_id = :kids_id",
+            ExpressionAttributeValues : {':kids_id': kidId}
+        };
+         await DynamoDBService.scan(params4).then((data => this.history = data));
+         console.log('num '+this.history.length);
+         var j;
+         for (j = 0; j < this.history.length; j++) {
+            console.log('kkkk '+this.history[j].pick_time);
+            this.ListHistory.push(this.history[0]);
+         }
+
+
+        }
 }

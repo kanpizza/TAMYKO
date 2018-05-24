@@ -9,42 +9,42 @@
   <ion-list>
 
     <ion-item no-lines class="body">
-      ชื่อผู้ใช้
+      Username
     </ion-item>
     <ion-item>
       <!-- <ion-input type="text" [(ngModel)]="username"></ion-input> -->
-      <ion-input placeholder="ชื่อผู้ใช้" username [(ngModel)]="username_field"></ion-input>
+      <ion-input placeholder="username" username [(ngModel)]="username_field"></ion-input>
     </ion-item>
 
     <ion-item no-lines class="body">
-      รหัสผ่าน
+      Password
     </ion-item>
     <ion-item>
-      <ion-input placeholder="รหัสผ่าน" password  type="password" [(ngModel)]="password_field"></ion-input>
+      <ion-input placeholder="password" password  type="password" [(ngModel)]="password_field"></ion-input>
     </ion-item>
 
   </ion-list>
 
   <ion-col col-3 text-center>
     <div class="center">
-      <button ion-button color="btn" (click)="login()" >เข้าสู่ระบบ</button>
+      <button ion-button color="btn" (click)="login()" >Login</button>
       <button ion-button class="text-center loginBtn loginBtn--facebook" color="secondary" (click)="loginwithfb()" *ngIf="!facebook.loggedIn">Login With Facebook</button>
     </div>
   </ion-col>
   <hr>
   <ion-col col-3 text-center>
     <div class="center">
-      <a  (click)="register()">สร้างบัญชีผู้ใช้</a>
+      <a  (click)="register()">Create new account</a>
     </div>
   </ion-col>
   <ion-col col-3 text-center>
     <div class="center">
-      <a href="#">ลืมรหัสผ่าน</a>
+      <a href="#">Forget password</a>
     </div>
   </ion-col>
 
 
-  
+
 
   <ion-card *ngIf="facebook.loggedIn">
 
