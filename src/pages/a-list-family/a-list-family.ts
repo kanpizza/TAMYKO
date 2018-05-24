@@ -27,7 +27,11 @@ export class AListFamilyPage {
   public rows : any;
   ListparentDetails = new Array();
   ListHistory = new Array();
-
+  parentList;
+  parent;
+  kidDetails;
+  parentDetail;
+  history;
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public modalCtrl: ModalController,public viewCtrl:ViewController,private _HTTP: HttpClient) {
       this.columns = [
       { prop: 'เวลา' },
