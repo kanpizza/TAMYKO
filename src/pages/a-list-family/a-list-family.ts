@@ -32,10 +32,7 @@ export class AListFamilyPage {
   kidDetails;
   parentDetail;
   history;
-<<<<<<< HEAD
-=======
 
->>>>>>> 93350b24f006d0bb8139ac36b08706c2681d7819
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public modalCtrl: ModalController,public viewCtrl:ViewController,private _HTTP: HttpClient) {
       this.columns = [
       { prop: 'เวลา' },
@@ -155,7 +152,7 @@ addParentPrompt() {
         {
           text: 'ยืนยัน',
           handler: data => {
-            this.createKeyID(data.KeyIDinput);
+            // this.createKeyID(data.KeyIDinput);
             console.log("Dataaaaa: "+data.KeyIDinput);
           }
         }

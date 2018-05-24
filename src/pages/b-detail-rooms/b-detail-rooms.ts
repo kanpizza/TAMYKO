@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams , ViewController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { DynamoDBService } from '../../core/dynamodb.service';
-
+import * as AWS from 'aws-sdk';
 /**
  * Generated class for the BDetailRoomsPage page.
  *
@@ -62,9 +62,12 @@ export class BDetailRoomsPage {
   async  getDetail(){
     console.log("class : "+this.class);
     console.log("room : "+this.room);
+    let dynamoDb = new AWS.DynamoDB();
+    let docClient = new AWS.DynamoDB.DocumentClient();
     var params = {
-      TableName: "History",
-      ProjectionExpression: "class,create_time,firstname,firstname_pick_kids"
+      TableName : "History",
+      FilterExpression : "Number = :Number",
+      ExpressionAttributeValues : {':Number': "0"}
     };
     await DynamoDBService.scan(params).then(
       (data) => {
