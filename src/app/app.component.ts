@@ -18,24 +18,31 @@ import { BScanAgentPage } from '../pages/b-scan-agent/b-scan-agent';
 import { BDetailRoomsPage } from '../pages/b-detail-rooms/b-detail-rooms';
 import { BDetailPickKidsPage } from '../pages/b-detail-pick-kids/b-detail-pick-kids';
 
+
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
+import firebase from 'firebase';
+
+import * as AWS from 'aws-sdk';
+
 @Component({
   templateUrl: 'app.html',
-  
+
 })
 export class MyApp implements OnInit{
   this_user="";
   ngOnInit(){
     this.this_user = "tete";
   }
-  
-  
+
+
   @ViewChild(Nav) nav: Nav;
 
   // rootPage: any = HomePage;
   public rootPage: any = HomePage;
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private afauth:AngularFireAuth) {
     this.initializeApp();
     // used for an example of ngFor and navigation
     this.pages = [
@@ -54,7 +61,9 @@ export class MyApp implements OnInit{
   }
 
   logout(){
-      this.nav.setRoot(HomePage);
+    console.log("outttttttttttttttttttttt")
+    this.nav.setRoot(HomePage);
+    this.logoutwithfb();
   }
 
   initializeApp() {
@@ -70,6 +79,11 @@ export class MyApp implements OnInit{
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  logoutwithfb() {
+    this.facebook.loggedIn = false;
+    this.afauth.auth.signOut();
   }
 
 }
