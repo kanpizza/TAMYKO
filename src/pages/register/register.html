@@ -96,7 +96,7 @@
       <div class="center">
         <re-captcha (resolved)="captchaResolved($event)" siteKey="6Lf3-lkUAAAAANnjgC7_RAwKZ2pA7LplldSJ-bme"></re-captcha>
         <br>
-        <button ion-button color="danger" (click)="changePage('HomePage')">Cancle</button>
+        <button ion-button color="danger" (click)="cancel()">Cancle</button>
         <button ion-button color="secondary" type="submit" [disabled]="!todo.valid || !captchaPassed" (click)="register()">Confirm</button>
 
       </div>

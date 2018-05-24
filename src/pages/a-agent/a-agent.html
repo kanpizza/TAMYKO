@@ -14,10 +14,16 @@
     <ion-content padding>
       <ion-grid>
           <ion-row>
-            <ion-label fixed>Name</ion-label>
+            <ion-label fixed>Firstname</ion-label>
           </ion-row>
           <ion-row padding-left>
-             <ion-input type="text" value="" [(ngModel)]="input_name" ></ion-input>
+             <ion-input type="text" value="" [(ngModel)]="input_firstname" ></ion-input>
+          </ion-row>
+          <ion-row>
+            <ion-label fixed>Lastname</ion-label>
+          </ion-row>
+          <ion-row padding-left>
+             <ion-input type="text" value="" [(ngModel)]="input_lastname" ></ion-input>
           </ion-row>
           <ion-row>
             <ion-label fixed>Phone Number</ion-label>
@@ -32,7 +38,7 @@
         </ion-row>
 
         <ion-item>
-          <ion-input type="text"></ion-input>
+           <ion-input type="text" value="" [(ngModel)]="input_cardID"></ion-input>
         </ion-item>
 
 
@@ -41,10 +47,10 @@
         </ion-row>
 
         <ion-item>
-            <ion-label>Students</ion-label>
-            <ion-select [(ngModel)]="Students">
-              <ion-option value="a">AAA</ion-option>
-              <ion-option value="b">BBBB</ion-option>
+            <!-- <ion-label>Students</ion-label> -->
+            <ion-select [(ngModel)]="selectKid">
+              <ion-option *ngFor="let kid of ListkidDetails" value="{{kid.ID_Kid}}">{{kid.firstname}} {{kid.lastname}}</ion-option>
+              <!-- <ion-option value="b">BBBB</ion-option> -->
             </ion-select>
           </ion-item>
 
