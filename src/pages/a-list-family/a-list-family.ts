@@ -27,6 +27,11 @@ export class AListFamilyPage {
   public rows : any;
   ListparentDetails = new Array();
   ListHistory = new Array();
+  parentList;
+  parent;
+  kidDetails;
+  parentDetail;
+  history;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public modalCtrl: ModalController,public viewCtrl:ViewController,private _HTTP: HttpClient) {
       this.columns = [
@@ -45,10 +50,11 @@ ionViewDidLoad() : void {
     console.log('ionViewDidLoad DetailsPage');
 }
 
-//  openModal(){
-//   const addModal = this.modalCtrl.create('AAddFamilyPage');
-//    addModal.present();
-//  }
+  openModal(){
+    const addModal = this.modalCtrl.create('AAddFamilyPage');
+    addModal.present();
+    console.log('open');
+ }
 
     async getParent(kidID){
         let dynamoDb = new AWS.DynamoDB();
@@ -124,4 +130,35 @@ dismiss() {
 
 
         }
+
+addParentPrompt() {
+    let prompt = this.alertCtrl.create({
+      title: 'เพิ่มผู้ปกครอง',
+     message: "Key ID",
+      inputs: [
+        {
+          name: 'KeyIDinput',
+          placeholder: 'Key ID'
+        }
+
+      ],
+      buttons: [
+        {
+          text: 'ยกเลิก',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'ยืนยัน',
+          handler: data => {
+            this.createKeyID(data.KeyIDinput);
+            console.log("Dataaaaa: "+data.KeyIDinput);
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
+        
 }
