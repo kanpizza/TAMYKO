@@ -57,7 +57,7 @@ export class MyApp implements OnInit{
       { title : 'List of Kids' , component: AListKidsPage },
     //  { title : 'รายชื่อผู้ปกครอง' , component: AListFamilyPage },
       // { title : 'ประวัติการรับบุตรหลาน' , component: AHistoryKidsPage },
-      { title : 'Sub Parent' , component: AAgentPage },
+      { title : 'Agent' , component: AAgentPage },
       { title : 'Edit Profile', component: AProfilePage}
       // { title : 'รายชื่อห้องเรียน' , component: BHistoryKidsPage },
       // { title : 'ประวัติการรับนักเรียน' , component: BListRoomsPage },
