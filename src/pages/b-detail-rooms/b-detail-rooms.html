@@ -11,21 +11,49 @@
 </ion-header>
 
 
-<ion-content no-padding>
+<ion-content >
    <div text-right>
-      <button ion-button color="primary">ตัวแทนผู้ปกครอง</button>
+      <button ion-button color="primary">Room Detail</button>
    </div>	
-<div no-padding>
-     <ngx-datatable
-       [sortType]="'multi'"
-       [headerHeight]="50"
-       [footerHeight]="50"
-       [rowHeight]="50"
-       [rows]="rows"
-       [columns]="columns"
-       [columnMode]="'force'"
-       [limit]="10">
-     </ngx-datatable>
-     
+<table>
+  <thead>
+    <tr>
+      <th>Firstname</th>
+      <th>Pick Time</th>
+      <th>Parent Name</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <div class="row" *ngFor="let history of HistoryList">
+    <tr>
+      <td>{{history.firstname}}</td>
+      <td>{{history.pick_time}}</td>
+      <td>{{history.firstname_pick_kids}}</td>
+      <td>{{history.status}}</td>
+      <td><button ion-button color="primary">Confirm</button></td>
+    </tr>
   </div>
+  </tbody>
+</table>
+
+<div >
+        <div class="row header">
+          <div class="col">Firstname</div>
+          <div class="col">Pick Time</div>
+          <div class="col">Parent Name</div>
+          <div class="col">Status</div>
+          <div class="col"></div>
+        </div>
+        <div class="row" *ngFor="let history of HistoryList">
+          <div class="col">{{history.firstname}}</div>
+          <div class="col">{{history.pick_time}}</div>
+          <div class="col">{{history.firstname_pick_kids}}</div>
+          <div class="col">{{history.status}}</div>
+          <div class="col"><button ion-button color="primary">Confirm</button></div>
+
+    </div>
+
+</div>
 </ion-content>

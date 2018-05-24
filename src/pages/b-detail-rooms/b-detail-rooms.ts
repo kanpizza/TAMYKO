@@ -29,6 +29,8 @@ export class BDetailRoomsPage {
     test={};
     class;
     room;
+    kidsList = new Array();
+    HistoryList = new Array();
     test_list: Array<String>;
   constructor(public navCtrl: NavController, public navParams: NavParams ,private _HTTP: HttpClient) {
     this.getClassRoom();
@@ -45,37 +47,38 @@ export class BDetailRoomsPage {
 
 
    ionViewDidLoad() : void {
-      this._HTTP
-      .get<Config>('../../assets/data/DetailRoom.json')
-      .subscribe((data) =>
-      {
-         this.rows = data.detailRoom;
-      });
+    this.getHistory();
     console.log('ionViewDidLoad DetailRoomPage');
    }
    getClassRoom(){
     this.class = DynamoDBService.getClass();
     this.room = DynamoDBService.getRoom();
     console.log('p. '+this.class+"/"+this.room);
-    this. getDetail();
+
     }
-  async  getDetail(){
-    console.log("class : "+this.class);
-    console.log("room : "+this.room);
-    let dynamoDb = new AWS.DynamoDB();
-    let docClient = new AWS.DynamoDB.DocumentClient();
-    var params = {
-      TableName : "History",
-      FilterExpression : "Number = :Number",
-      ExpressionAttributeValues : {':Number': "0"}
-    };
-    await DynamoDBService.scan(params).then(
-      (data) => {
-        this.test = data;
+
+  async getHistory(){
+        let dynamoDb = new AWS.DynamoDB();
+        let docClient = new AWS.DynamoDB.DocumentClient();
+        
+        var tId = '1000000001';
+            var params = {
+              TableName : "History",
+              FilterExpression : "teacher_id = :teacher_id",
+              ExpressionAttributeValues : {':teacher_id': tId}
+            };
+            await DynamoDBService.scan(params).then((data => this.kidsLists = data));
+
+        console.log('nnnnn '+this.kidsLists[0].firstname);
+        console.log('nnnnn '+this.kidsLists[1].firstname);
+        var j;
+         for (j = 0; j < this.kidsLists.length; j++) {
+            console.log('kkkk '+this.kidsLists[j].pick_time);
+            this.HistoryList.push(this.kidsLists[j]);
+         }
+
       }
-    );
-    await console.log(this.test);
-  }
+
 
 
 }
