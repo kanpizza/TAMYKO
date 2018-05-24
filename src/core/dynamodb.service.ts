@@ -13,6 +13,7 @@ export class DynamoDBService {
   static class="";
   static room="";
   static id="";
+  static kidid_detail = "";
   private static config = {
     region: 'us-west-2',
     accessKeyId: 'AKIAJ37ROVQJQIMDIDEA',
@@ -65,6 +66,13 @@ export class DynamoDBService {
   }
   public static getClass(){
     return this.class ;
+  }
+  public static setKidid_detail(kid_id){
+    this.kidid_detail = kid_id;
+    console.log('in kidid_detail: '+this.kidid_detail);
+  }
+  public static getKidid_detail(){
+    return this.kidid_detail ;
   }
 
 
