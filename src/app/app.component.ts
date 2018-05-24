@@ -23,6 +23,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import firebase from 'firebase';
 
+import { DynamoDBService } from '../../core/dynamodb.service';
+
 import * as AWS from 'aws-sdk';
 
 @Component({
@@ -31,6 +33,11 @@ import * as AWS from 'aws-sdk';
 })
 export class MyApp implements OnInit{
   this_user="";
+
+  facebook = {
+    loggedIn : true
+  };
+
   ngOnInit(){
     this.this_user = "tete";
   }
@@ -47,11 +54,11 @@ export class MyApp implements OnInit{
     // used for an example of ngFor and navigation
     this.pages = [
       // { title: 'List', component: ListPage },
-      { title : 'รายชื่อบุตรหลาน' , component: AListKidsPage },
+      { title : 'List of Kids' , component: AListKidsPage },
     //  { title : 'รายชื่อผู้ปกครอง' , component: AListFamilyPage },
       // { title : 'ประวัติการรับบุตรหลาน' , component: AHistoryKidsPage },
-      { title : 'ตัวแทนผู้ปกครอง' , component: AAgentPage },
-      { title : 'แก้ไขข้อมูลส่วนตัว', component: AProfilePage}
+      { title : 'Sub Parent' , component: AAgentPage },
+      { title : 'Edit Profile', component: AProfilePage}
       // { title : 'รายชื่อห้องเรียน' , component: BHistoryKidsPage },
       // { title : 'ประวัติการรับนักเรียน' , component: BListRoomsPage },
       // { title : 'สแกนตัวแทนผู้ปกครอง' , component: BScanAgentPage },

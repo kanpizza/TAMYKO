@@ -92,7 +92,7 @@ export class HomePage {
     if(id[0]=="1"){
       this.navCtrl.setRoot(BListRoomsPage);
     }
-    
+
   }
 
 
@@ -119,7 +119,7 @@ export class HomePage {
 
   logoutwithfb() {
     this.facebook.loggedIn = false;
-  this.afauth.auth.signOut();
+    this.afauth.auth.signOut();
   }
 
 
