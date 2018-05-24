@@ -36,7 +36,7 @@ export class DynamoDBService {
 
   }
   public static getParent(){
-    return "get   "+this.firstname+" "+this.lastname+" "+this.username_db;
+    return this.username_db;
   }
 
   public static scan(params){

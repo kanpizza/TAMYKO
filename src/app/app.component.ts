@@ -8,6 +8,7 @@ import { DynamoDBService} from '../core/dynamodb.service';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { AListKidsPage } from '../pages/a-list-kids/a-list-kids';
+import { AProfilePage } from '../pages/a-profile/a-profile';
 //import { AListFamilyPage } from '../pages/a-list-family/a-list-family';
 import { AHistoryKidsPage } from '../pages/a-history-kids/a-history-kids';
 import { AAgentPage } from '../pages/a-agent/a-agent';
@@ -41,11 +42,12 @@ export class MyApp implements OnInit{
       // { title: 'List', component: ListPage },
       { title : 'รายชื่อบุตรหลาน' , component: AListKidsPage },
     //  { title : 'รายชื่อผู้ปกครอง' , component: AListFamilyPage },
-      { title : 'ประวัติการรับบุตรหลาน' , component: AHistoryKidsPage },
+      // { title : 'ประวัติการรับบุตรหลาน' , component: AHistoryKidsPage },
       { title : 'ตัวแทนผู้ปกครอง' , component: AAgentPage },
-      { title : 'รายชื่อห้องเรียน' , component: BHistoryKidsPage },
-      { title : 'ประวัติการรับนักเรียน' , component: BListRoomsPage },
-      { title : 'สแกนตัวแทนผู้ปกครอง' , component: BScanAgentPage },
+      { title : 'แก้ไขข้อมูลส่วนตัว', component: AProfilePage}
+      // { title : 'รายชื่อห้องเรียน' , component: BHistoryKidsPage },
+      // { title : 'ประวัติการรับนักเรียน' , component: BListRoomsPage },
+      // { title : 'สแกนตัวแทนผู้ปกครอง' , component: BScanAgentPage },
       //{ title : 'ออกจากระบบ' , component: HomePage },
     ];
 

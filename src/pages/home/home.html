@@ -28,9 +28,7 @@
   <ion-col col-3 text-center>
     <div class="center">
       <button ion-button color="btn" (click)="login()" >เข้าสู่ระบบ</button>
-      <button ion-button class="loginBtn loginBtn--facebook">
-  Login with Facebook
-</button>
+      <button ion-button class="text-center loginBtn loginBtn--facebook" color="secondary" (click)="loginwithfb()" *ngIf="!facebook.loggedIn">Login With Facebook</button>
     </div>
   </ion-col>
   <hr>
@@ -46,8 +44,7 @@
   </ion-col>
 
 
-  <button ion-button class="text-center loginBtn loginBtn--facebook" color="secondary" (click)="loginwithfb()" *ngIf="!facebook.loggedIn">Login With Facebook</button>
-  <button ion-button (click)="logoutwithfb()">Logout With Facebook</button>
+  
 
   <ion-card *ngIf="facebook.loggedIn">
 
