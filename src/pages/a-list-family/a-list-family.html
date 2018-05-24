@@ -23,14 +23,17 @@
 
 <ion-content center text-center >
     
-      <ion-item>
-        <ion-avatar item-start>
-          <img src="../assets/imgs/people.png"> 
-        </ion-avatar>
-        <h2>น้องการะเกด</h2>
-        <h2>ชั้น ป.3/1</h2>
-      </ion-item>
 
+  <ion-card *ngFor="let kidDetail of kidDetails">
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img style="width:85px; height: 85px;" src="{{kidDetail.s3_url}}">
+    </ion-thumbnail>
+      <h2>{{kidDetail.nickname}}</h2>
+      <p>{{kidDetail.firstname}} {{kidDetail.lastname}}</p>
+      <p>ป.{{kidDetail.class}}/{{kidDetail.room}}</p>
+    </ion-item>
+  </ion-card>
 
     <ion-card>
       <ion-navbar>
@@ -41,13 +44,24 @@
           </button>
         </ion-buttons>
   </ion-navbar>
-      <ion-item>
-        <h2>คุณอึ่งอ่าง  ตัวกลม</h2>
-        <h2>คุณกระตุ่ย   ขนปุย</h2>
+      <ion-item >
+        <h2 *ngFor="let parentDetail of ListparentDetails">{{parentDetail.firstname}}  {{parentDetail.lastname}}</h2>
       </ion-item>
     </ion-card>
-  
  
+ <ion-card> 
+ <div class="row header">
+          <div class="col">Date</div>
+          <div class="col">Time</div>
+          <div class="col">Name</div>
+        </div>
+        <div class="row" *ngFor="let history of ListHistory">
+          <div class="col">{{history.create_time}}</div>
+          <div class="col">{{history.pick_time}}</div>
+          <div class="col">{{history.firstname_pick_kids}}</div>
+        </div>
+
+  </ion-card>
 </ion-content>
 
 <ion-footer center text-center>
