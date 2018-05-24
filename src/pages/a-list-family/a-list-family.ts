@@ -22,6 +22,8 @@ export interface Config {
 })
 
 export class AListFamilyPage {
+  lastname;
+  firstname;
   public config : Config;
   public columns : any;
   public rows : any;
@@ -32,6 +34,8 @@ export class AListFamilyPage {
   kidDetails;
   parentDetail;
   history;
+  username;
+  user_list;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public modalCtrl: ModalController,public viewCtrl:ViewController,private _HTTP: HttpClient) {
       this.columns = [
@@ -133,32 +137,71 @@ dismiss() {
 
 addParentPrompt() {
     let prompt = this.alertCtrl.create({
-      title: 'เพิ่มผู้ปกครอง',
-     message: "Key ID",
+      title: 'Add another parent',
+    message : "Username :",
       inputs: [
         {
-          name: 'KeyIDinput',
-          placeholder: 'Key ID'
+            name : "Username",
+          label : 'username',
+          type : 'input'
         }
 
       ],
       buttons: [
         {
-          text: 'ยกเลิก',
+          text: 'cancel',
+            
           handler: data => {
             console.log('Cancel clicked');
           }
         },
         {
-          text: 'ยืนยัน',
+          text: 'submit',
           handler: data => {
-            // this.createKeyID(data.KeyIDinput);
-            console.log("Dataaaaa: "+data.KeyIDinput);
+          //  this.username = data.Username;
+           this.checkUser(data.Username);
           }
         }
       ]
     });
     prompt.present();
+   
   }
-        
+  async checkUser(username){
+    this.addUserinDB();
+    console.log('userrrrr '+username);
+    let dynamoDb = new AWS.DynamoDB();
+    let docClient = new AWS.DynamoDB.DocumentClient();
+    var params = {
+        TableName : "Users",
+        FilterExpression : "username = :username",
+        ExpressionAttributeValues : {":username": username}
+    };
+    await DynamoDBService.scan(params).then(
+        (data) => {
+          this.user_list = data[0];
+        }
+      );
+    await this.firstname == this.user_list.firstname;
+    await this.lastname == this.user_list.lastname;
+   
+    this.ListparentDetails.push(this.user_list);
+  }
+  addUserinDB(){
+    if(this.ListparentDetails.length > 2){
+      let alert = this.alertCtrl.create({
+        title: 'User more than 3 people',
+        message: 'Can not add this user',
+        buttons: [
+          {
+            text: 'Sumbit',
+            handler: () => {
+              console.log('clicked');
+            }
+          }
+        ]
+      });
+      alert.present();
+    }
+  }
 }
