@@ -10,13 +10,13 @@
       <button ion-button menuToggle>
           <ion-icon name="menu"></ion-icon>
         </button>
-    <ion-title>ข้อมูลส่วนตัว</ion-title>
+    <ion-title>My Profile</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="body">
   <form [formGroup]="todo" (ngSubmit)="regisForm()" *ngFor="let u of user_list">
       <ion-item no-lines class="body">
         Firstname

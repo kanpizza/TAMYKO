@@ -54,6 +54,9 @@ export class RegisterPage {
   regisForm(){
     //click submit on RegisterPage
   }
+  cancel(){
+    this.navCtrl.push(HomePage);
+  }
   register(){
     console.log(this.name_field);
     console.log(this.tel_field);
@@ -65,7 +68,7 @@ export class RegisterPage {
     console.log(this.password_field);
     console.log(this.confirm_password_filed);
     this.createUser();
-
+    this.navCtrl.push(HomePage);
     this.name_field = "";
     this.tel_field = "";
     this.id_field = "";

@@ -49,7 +49,7 @@ export class AListFamilyPage {
 
 ionViewDidLoad() : void {
 
-    this.getKid("3000000005");
+    this.getKid(DynamoDBService.getKidid_detail());
     //this.getParent("2000000004");
     console.log('ionViewDidLoad DetailsPage');
 }
@@ -75,7 +75,7 @@ ionViewDidLoad() : void {
         // for loop data to get ID_Kid
 
         }
-   
+
 
 dismiss() {
     this.viewCtrl.dismiss();
@@ -85,8 +85,8 @@ dismiss() {
     async getKid(userID){
         let dynamoDb = new AWS.DynamoDB();
         let docClient = new AWS.DynamoDB.DocumentClient();
-        
-        var kidId = '2000000003';
+
+        var kidId = userID;
 
             var params = {
               TableName : "Kids",
@@ -94,7 +94,7 @@ dismiss() {
               ExpressionAttributeValues : {':ID_Kid': kidId}
             };
             await DynamoDBService.scan(params).then((data => this.kidDetails = data));
-    
+
 
         var params2 = {
             TableName : "Priority",
@@ -107,7 +107,7 @@ dismiss() {
          var i;
          for (i = 0; i < this.parent.length; i++) {
             console.log("name --> "+this.parent[i].Parent_id);
-         
+
             var params3 = {
               TableName : "Users",
               FilterExpression : "id = :id",
@@ -150,7 +150,7 @@ addParentPrompt() {
       buttons: [
         {
           text: 'cancel',
-            
+
           handler: data => {
             console.log('Cancel clicked');
           }
@@ -165,7 +165,7 @@ addParentPrompt() {
       ]
     });
     prompt.present();
-   
+
   }
   async checkUser(username){
     this.addUserinDB();
@@ -184,7 +184,7 @@ addParentPrompt() {
       );
     await this.firstname == this.user_list.firstname;
     await this.lastname == this.user_list.lastname;
-   
+
     this.ListparentDetails.push(this.user_list);
   }
   addUserinDB(){
@@ -203,5 +203,29 @@ addParentPrompt() {
       });
       alert.present();
     }
+  }
+  removeUser(){
+    let alert = this.alertCtrl.create({
+      title: 'Confirm to remove user',
+      message: 'Do you want to remove user',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'remove',
+          handler: () => {
+            this.ListparentDetails.pop();
+          }
+        }
+      ]
+    });
+    alert.present();
+    
+    
   }
 }
