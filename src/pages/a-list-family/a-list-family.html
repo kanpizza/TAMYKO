@@ -44,9 +44,16 @@
           </button>
         </ion-buttons>
   </ion-navbar>
-      <ion-item >
-        <h2 *ngFor="let parentDetail of ListparentDetails">{{parentDetail.firstname}}  {{parentDetail.lastname}}</h2>
-      </ion-item>
+  <ion-row *ngFor="let parentDetail of ListparentDetails">
+      <ion-col>
+          <h2 >{{parentDetail.firstname}}  {{parentDetail.lastname}}</h2>
+      </ion-col>
+      <ion-col>
+          <!-- <button ion-button icon-only> -->
+              <ion-icon name="remove-circle" color="dark" (click)="removeUser()"></ion-icon>
+            <!-- </button> -->
+      </ion-col>
+    </ion-row>      
     </ion-card>
  
  <ion-card> 

@@ -16,13 +16,16 @@ import { DynamoDBService } from '../../core/dynamodb.service';
   templateUrl: 'a-list-kids.html',
 })
 export class AListKidsPage {
+  kidDetails2: {};
+  kidList2: {};
+  kidDetails: {};
   keyID = "";
   //ListkidDetails: Array<>;
   id ="";
   ListkidDetails = new Array();
   ListkidDetails2 = new Array();
-  kidList: Array<>;
-  dataClassroom : Array<>;
+  kidList;
+  dataClassroom;
   Priority_lenght;
   teacher_id='';
   imgFB = "";
@@ -220,7 +223,7 @@ export class AListKidsPage {
     await console.log(this.Priority_lenght);
     //////////////////////////////////////////////////////////////////////////////
 
-    var params = {
+    var params2 = {
       TableName: "Priority",
       Item: {
         "Kids_id" : this.IDKid,
@@ -232,7 +235,7 @@ export class AListKidsPage {
 
 
     }
-   DynamoDBService.put(params);
+   DynamoDBService.put(params2);
   }
 
 

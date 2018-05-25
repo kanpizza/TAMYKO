@@ -204,4 +204,28 @@ addParentPrompt() {
       alert.present();
     }
   }
+  removeUser(){
+    let alert = this.alertCtrl.create({
+      title: 'Confirm to remove user',
+      message: 'Do you want to remove user',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'remove',
+          handler: () => {
+            this.ListparentDetails.pop();
+          }
+        }
+      ]
+    });
+    alert.present();
+    
+    
+  }
 }
