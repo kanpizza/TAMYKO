@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams , ViewController } from 'ionic-angu
 import { HttpClient } from '@angular/common/http';
 import { DynamoDBService } from '../../core/dynamodb.service';
 import * as AWS from 'aws-sdk';
+import { AlertController } from 'ionic-angular';
 /**
  * Generated class for the BDetailRoomsPage page.
  *
@@ -32,7 +33,7 @@ export class BDetailRoomsPage {
     kidsList = new Array();
     HistoryList = new Array();
     test_list: Array<String>;
-  constructor(public navCtrl: NavController, public navParams: NavParams ,private _HTTP: HttpClient) {
+  constructor(public navCtrl: NavController, public navParams: NavParams ,private _HTTP: HttpClient,public alertCtrl: AlertController) {
     this.getClassRoom();
          this.columns = [
         { prop: 'เวลา' },
@@ -44,7 +45,55 @@ export class BDetailRoomsPage {
   }
 
 
+ showConfirm(namePick,kid,record) {
+    let confirm = this.alertCtrl.create({
+      title: 'Confirm Pick Kid',
+      message: 'Do you agree to "'+namePick+'" pick '+kid+'?',
+      buttons: [
+        {
+          text: 'Reject',
+          handler: () => {
+            this.Reject(record);
+      
+            console.log('Reject clicked');
+          }
+        },
+        {
+          text: 'Confirm',
+          handler: () => {
+            console.log('Confirm clicked');
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
 
+
+Reject(record){
+
+    let dynamoDb = new AWS.DynamoDB();
+    let docClient = new AWS.DynamoDB.DocumentClient();
+    var params = {
+      TableName: "History",
+      Item: {
+  "class": this.record.class,
+  "create_time": this.record.create_time,
+  "firstname": this.record.firstname,
+  "firstname_pick_kids": this.record.firstname_pick_kids,
+  "kids_id": "2000000003",
+  "lastname": "Ruengittinun",
+  "lastname_pick_kids": "Sawangreungrong",
+  "Number": 2,
+  "parent_id": "3000000002",
+  "pick_time": "5:44:13 PM",
+  "qr_code": "-",
+  "room": 2,
+  "status": 1,
+  "teacher_id": "1000000001"
+        }
+
+}
 
    ionViewDidLoad() : void {
     this.getClassRoom();

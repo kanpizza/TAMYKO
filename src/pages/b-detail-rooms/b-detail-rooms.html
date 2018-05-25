@@ -40,20 +40,29 @@
 
 <div >
         <div class="row header">
-          <div class="col">Firstname</div>
-          <div class="col">Pick Time</div>
-          <div class="col">Parent Name</div>
-          <div class="col">Status</div>
-          <div class="col"></div>
+          <div width="20%" class="col">Firstname</div>
+          <div width="20%" class="col">Pick Time</div>
+          <div width="20%" class="col">Parent Name</div>
+          <div width="20%" class="col"></div>
         </div>
         <div class="row" *ngFor="let history of HistoryList">
-          <div class="col">{{history.firstname}}</div>
-          <div class="col">{{history.pick_time}}</div>
-          <div class="col">{{history.firstname_pick_kids}}</div>
-          <div class="col">{{history.status}}</div>
-          <div class="col"><button ion-button color="primary">Confirm</button></div>
+          <div width="20%" class="col">{{history.firstname}}</div>
+          <div width="20%" class="col">{{history.pick_time}}</div>
+          <div width="20%" class="col">{{history.firstname_pick_kids}}</div>
+          <div width="20%" class="col">
+            <div *ngIf=" history.status == '0' ">
+              <button ion-button class="primary" (click)="showConfirm(history.firstname_pick_kids,history.firstname,history)"> Waiting </button>
+            </div>
+            <div *ngIf=" history.status == '1' ">
+              <button ion-button color="secondary"> Success </button>
+            </div>
+            <div *ngIf=" history.status == '-1' ">
+              <button ion-button color="danger"> Reject </button>
+            </div>
 
-    </div>
 
-</div>
+          </div>
+
+        </div>
+      </div>
 </ion-content>
